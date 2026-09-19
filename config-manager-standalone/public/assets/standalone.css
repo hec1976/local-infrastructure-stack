@@ -1,0 +1,1147 @@
+/*
+ * Eigenständiges Stylesheet für das Config-Manager-Portal.
+ * Modernes, ruhiges Admin-Panel-Erscheinungsbild auf Bootstrap-5-Basis mit
+ * eigener Farb-/Abstands-Skala statt der Bootstrap-Standardoptik.
+ */
+
+:root {
+    --mmbb-primary: #1e3a8a;
+    --mmbb-primary-dark: #172554;
+    --mmbb-primary-soft: #e2e8f5;
+    --mmbb-accent2: #0e7490;
+    --mmbb-success: #15803d;
+    --mmbb-success-soft: #dcfce7;
+    --mmbb-warning: #b45309;
+    --mmbb-warning-soft: #fef3c7;
+    --mmbb-danger: #b91c1c;
+    --mmbb-danger-soft: #fee2e2;
+
+    --mmbb-bg: #eef0f4;
+    --mmbb-surface: #ffffff;
+    --mmbb-border: #c3cad6;
+    --mmbb-text: #10131c;
+    --mmbb-text-muted: #4b5261;
+
+    --mmbb-control-height: 2.4rem;
+    --mmbb-control-height-sm: 2.125rem;
+    --mmbb-badge-height: 1.5rem;
+    --mmbb-card-header-height: 3rem;
+    --mmbb-panel-bg: #f7f8fb;
+    --mmbb-subtle-bg: #fafbfc;
+
+    --mmbb-radius-sm: .25rem;
+    --mmbb-radius: .375rem;
+    --mmbb-radius-lg: .5rem;
+
+    --mmbb-space-1: .375rem;
+    --mmbb-space-2: .75rem;
+    --mmbb-space-3: 1.25rem;
+    --mmbb-space-4: 2rem;
+
+    --mmbb-sidebar-width: 260px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background: var(--mmbb-bg);
+    color: var(--mmbb-text);
+    font-family: var(--teko-ui-font, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+    font-size: .93rem;
+}
+
+h1, h2, h3, h4, h5, h6 { color: var(--mmbb-text); font-weight: 600; }
+
+a { color: var(--mmbb-primary); }
+a:hover { color: var(--mmbb-primary-dark); }
+
+/* ---------- Topbar ---------- */
+
+.mmbb-topbar {
+    background: #14162b !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    padding: .7rem 1.25rem;
+}
+
+.mmbb-topbar .navbar-brand {
+    font-weight: 700;
+    letter-spacing: -.01em;
+    font-size: 1.05rem;
+}
+
+.mmbb-topbar .badge {
+    font-weight: 500;
+    font-size: .68rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, .12) !important;
+}
+
+.mmbb-topbar .btn-outline-light {
+    border-color: rgba(255, 255, 255, .25);
+    font-size: .82rem;
+    padding: .3rem .75rem;
+    border-radius: var(--mmbb-radius-sm);
+}
+
+.mmbb-topbar .btn-outline-light:hover {
+    background: rgba(255, 255, 255, .12);
+    border-color: rgba(255, 255, 255, .4);
+}
+
+/* ---------- Layout: Sidebar + Hauptinhalt ---------- */
+
+.mmbb-shell { align-items: stretch; }
+
+.mmbb-sidebar {
+    flex: 0 0 var(--mmbb-sidebar-width);
+    width: var(--mmbb-sidebar-width);
+    background: var(--mmbb-surface);
+    border-right: 1px solid #b7bfcc;
+}
+
+@media (min-width: 992px) {
+    .offcanvas-lg.mmbb-sidebar {
+        position: sticky;
+        top: 0;
+        align-self: flex-start;
+        height: 100vh;
+        overflow-y: auto;
+    }
+}
+
+.mmbb-content {
+    min-width: 0;
+    padding: var(--mmbb-space-4) var(--mmbb-space-4);
+}
+
+.mmbb-main {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 !important;
+}
+
+/* ---------- Sidebar-Navigation ---------- */
+
+.mmbb-sidebar .offcanvas-body { padding: var(--mmbb-space-3) var(--mmbb-space-2); }
+
+.mmbb-nav-group {
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    color: #6b7280 !important;
+    padding-left: var(--mmbb-space-2);
+    margin-bottom: var(--mmbb-space-1) !important;
+}
+
+.mmbb-sidebar .nav-link {
+    border-radius: var(--mmbb-radius-sm);
+    padding: .55rem .8rem;
+    font-size: .89rem;
+    font-weight: 500;
+    color: #4b5261;
+    transition: background-color .12s ease, color .12s ease;
+}
+
+.mmbb-sidebar .nav-link i {
+    font-size: .95rem;
+    color: #9ca3af;
+    transition: color .12s ease;
+    width: 1.15rem;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.mmbb-sidebar .nav-link:hover { background: var(--mmbb-primary-soft); color: var(--mmbb-primary-dark); }
+.mmbb-sidebar .nav-link:hover i { color: var(--mmbb-primary-dark); }
+
+.mmbb-sidebar .nav-link.active { background: var(--mmbb-primary); color: #fff !important; }
+.mmbb-sidebar .nav-link.active i { color: #fff; }
+
+/* Einheitliche Icon-Breite auch ausserhalb der Sidebar (Buttons, Kartenkoepfe,
+   Tabellen-Aktionen), damit Text nach Icons ueberall gleich weit einrueckt. */
+.btn i, .card-header i, .status-summary-bar i, .table-actions i, .breadcrumb i {
+    width: 1.1rem;
+    display: inline-block;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Aktions-Buttons in Tabellenzeilen: gleiche Groesse und Abstand,
+   unabhaengig vom jeweiligen Icon. */
+.table-actions {
+    white-space: nowrap;
+}
+.table-actions .btn {
+    width: 2.1rem;
+    height: 2.1rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 .15rem;
+}
+
+/* ---------- Breadcrumb ---------- */
+
+.breadcrumb {
+    font-size: .82rem;
+    color: var(--mmbb-text-muted);
+    margin-bottom: var(--mmbb-space-3) !important;
+}
+.breadcrumb-item.active { color: var(--mmbb-text); font-weight: 600; }
+
+
+
+/* ---------- Einheitlicher Seitenkopf ---------- */
+
+.mmbb-module-header {
+    margin: 0 0 1rem;
+}
+
+.mmbb-module-breadcrumb {
+    margin: 0 0 .55rem;
+}
+
+.mmbb-module-header .breadcrumb {
+    margin-bottom: 0 !important;
+    min-height: 1.25rem;
+}
+
+.mmbb-page-heading {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    min-height: var(--mmbb-card-header-height);
+}
+
+.mmbb-page-heading-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    flex: 0 0 2.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #cbd5e1;
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--mmbb-primary-soft);
+    color: var(--mmbb-primary);
+    font-size: 1.15rem;
+}
+
+.mmbb-page-heading-copy {
+    min-width: 0;
+}
+
+.mmbb-page-title {
+    margin: 0;
+    font-size: 1.28rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.015em;
+}
+
+.mmbb-page-subtitle {
+    margin: .2rem 0 0;
+    color: var(--mmbb-text-muted);
+    font-size: .82rem;
+    line-height: 1.35;
+}
+
+
+/* ---------- Karten ---------- */
+
+.card {
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .1);
+}
+
+.card-header {
+    background: var(--mmbb-panel-bg) !important;
+    border-bottom: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg) var(--mmbb-radius-lg) 0 0 !important;
+    padding: .6rem var(--mmbb-space-3);
+    min-height: 3rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--mmbb-text);
+}
+
+.card-header > :first-child { min-width: 0; }
+.card-header .btn,
+.card-header .badge { flex-shrink: 0; }
+
+.card-body { padding: var(--mmbb-space-3); }
+
+/* ---------- Formulare ---------- */
+
+.form-label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: #4b5261;
+}
+
+.form-control, .form-select {
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-sm);
+    padding: .5rem .8rem;
+    font-size: .88rem;
+    min-height: var(--mmbb-control-height);
+}
+
+/* Textareas nur vertikal in der Hoehe veraenderbar, nicht in der Breite,
+   damit nebeneinanderliegende Felder nicht auseinanderlaufen. */
+textarea.form-control {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--mmbb-primary);
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, .15);
+}
+
+.input-group-text {
+    background: var(--mmbb-surface);
+    border: 1px solid var(--mmbb-border);
+    border-right: none;
+    color: var(--mmbb-text-muted);
+    min-height: var(--mmbb-control-height);
+}
+
+.form-check-input:checked {
+    background-color: var(--mmbb-primary);
+    border-color: var(--mmbb-primary);
+}
+.form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(29, 78, 216, .15);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+    border-radius: var(--mmbb-radius-sm);
+    font-size: .85rem;
+    font-weight: 600;
+    padding: .45rem .95rem;
+    min-height: var(--mmbb-control-height);
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.btn-sm {
+    min-height: var(--mmbb-control-height-sm);
+    padding: .34rem .72rem;
+    border-radius: var(--mmbb-radius-sm);
+    font-size: .8rem;
+    line-height: 1.2;
+}
+
+/* Bootstrap-Abstandsklassen an Icons nicht mit dem zentralen Button-Gap doppeln. */
+.btn > i.me-1,
+.btn > i.me-2 { margin-right: 0 !important; }
+
+.btn-secondary {
+    background: #5f6877;
+    border-color: #5f6877;
+    color: #fff;
+}
+.btn-secondary:hover { background: #4b5563; border-color: #4b5563; }
+
+.btn-danger {
+    background: var(--mmbb-danger);
+    border-color: var(--mmbb-danger);
+    color: #fff;
+}
+.btn-danger:hover { background: #991b1b; border-color: #991b1b; }
+
+.btn-warning {
+    background: var(--mmbb-warning);
+    border-color: var(--mmbb-warning);
+    color: #fff;
+}
+.btn-warning:hover { background: #92400e; border-color: #92400e; color: #fff; }
+
+
+.btn-primary {
+    background: var(--mmbb-primary);
+    border-color: var(--mmbb-primary);
+    color: #fff;
+}
+.btn-primary:hover { background: var(--mmbb-primary-dark); border-color: var(--mmbb-primary-dark); }
+
+.btn-outline-primary {
+    color: var(--mmbb-primary);
+    border-color: var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.btn-outline-primary:hover { background: var(--mmbb-primary-soft); border-color: var(--mmbb-primary); }
+
+.btn-outline-secondary {
+    color: var(--mmbb-text);
+    border-color: var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.btn-outline-secondary:hover { background: #f3f4f6; border-color: #b9c0cc; }
+
+.btn-outline-success {
+    color: var(--mmbb-success);
+    border-color: var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.btn-outline-success:hover { background: var(--mmbb-success-soft); border-color: var(--mmbb-success); }
+
+.btn-outline-danger {
+    color: var(--mmbb-danger);
+    border-color: var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.btn-outline-danger:hover { background: var(--mmbb-danger-soft); border-color: var(--mmbb-danger); }
+
+.btn-outline-warning {
+    color: var(--mmbb-warning);
+    border-color: var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.btn-outline-warning:hover { background: var(--mmbb-warning-soft); border-color: var(--mmbb-warning); }
+
+/* Ausgefuellte Buttons (Primary/Success) bleiben Aktionsfarben vorbehalten,
+   z.B. "Aenderungen speichern" - das ist bewusst der einzige knallige Akzent. */
+.btn-success {
+    background: var(--mmbb-success);
+    border-color: var(--mmbb-success);
+    color: #fff;
+}
+.btn-success:hover { background: #14532d; border-color: #14532d; }
+
+/* ---------- Badges ---------- */
+
+.mmbb-content .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+    min-height: var(--mmbb-badge-height);
+    border-radius: var(--mmbb-radius-sm) !important;
+    padding: .28rem .55rem;
+    font-size: .7rem;
+    font-weight: 650;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.mmbb-content .badge.rounded-pill {
+    border-radius: var(--mmbb-radius-sm) !important;
+}
+
+.badge.bg-success { background: var(--mmbb-success) !important; }
+.badge.bg-warning { background: var(--mmbb-warning) !important; color: #fff !important; }
+.badge.bg-danger { background: var(--mmbb-danger) !important; }
+.badge.bg-secondary { background: #6b7280 !important; }
+.badge.text-bg-success { background: var(--mmbb-success) !important; }
+.badge.text-bg-danger { background: var(--mmbb-danger) !important; }
+
+.status-summary-bar .fw-semibold { font-size: .88rem; }
+
+/* ---------- Tabellen ---------- */
+
+.table { font-size: .87rem; }
+
+.mmbb-content .table thead th {
+    background: var(--mmbb-subtle-bg);
+    font-size: .72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--mmbb-text-muted);
+    border-bottom: 1px solid var(--mmbb-border);
+    padding: .7rem .75rem;
+    vertical-align: middle;
+}
+
+.mmbb-content .table td { padding: .65rem .75rem; vertical-align: middle; }
+.table-hover tbody tr:hover { background: var(--mmbb-primary-soft); }
+
+/* ---------- Tabs (nav-tabs) als schlichter Unterstrich ---------- */
+
+.nav-tabs {
+    border-bottom: 1px solid var(--mmbb-border);
+    gap: 1.5rem;
+}
+.nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    padding: .6rem .1rem;
+    font-size: .88rem;
+    font-weight: 500;
+    color: var(--mmbb-text-muted);
+    background: transparent;
+}
+.nav-tabs .nav-link:hover {
+    border-color: transparent;
+    color: var(--mmbb-text);
+}
+.nav-tabs .nav-link.active {
+    background: transparent;
+    color: var(--mmbb-primary);
+    border-bottom-color: var(--mmbb-primary);
+}
+
+/* ---------- Audit-Log Filterformular ---------- */
+
+.mmbb-audit-filter-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mmbb-space-2) var(--mmbb-space-3);
+    align-items: end;
+}
+
+.mmbb-audit-filter-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 150px;
+    min-width: 0;
+}
+
+.mmbb-audit-filter-actions {
+    display: flex;
+    gap: var(--mmbb-space-1);
+    align-items: center;
+    flex: 0 0 auto;
+}
+
+/* ---------- Alerts ---------- */
+
+.alert {
+    border: none;
+    border-radius: var(--mmbb-radius);
+    padding: var(--mmbb-space-2) var(--mmbb-space-3);
+}
+.alert-danger { background: #fef2f2; color: #991b1b; }
+.alert-warning { background: #fffbeb; color: #92400e; }
+.alert-success { background: #f0fdf4; color: #166534; }
+.alert-info { background: var(--mmbb-primary-soft); color: var(--mmbb-primary-dark); }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 991.98px) {
+    .mmbb-content { padding: var(--mmbb-space-2); }
+}
+
+
+@media (max-width: 575.98px) {
+    .mmbb-page-heading { align-items: flex-start; }
+    .mmbb-page-heading-icon {
+        width: 2.35rem;
+        height: 2.35rem;
+        flex-basis: 2.35rem;
+    }
+    .mmbb-page-title { font-size: 1.15rem; }
+}
+
+
+/* ---------- Portal-wide component finish (3.10.9) ---------- */
+
+/* Neutral metric/status tiles used by overview-type pages. */
+.mmbb-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--mmbb-space-2);
+}
+.mmbb-stat-tile {
+    min-width: 0;
+    padding: .65rem .75rem;
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--mmbb-subtle-bg);
+}
+.mmbb-stat-tile > span,
+.mmbb-stat-tile > strong { display: block; }
+.mmbb-stat-tile > span {
+    margin-bottom: .15rem;
+    color: var(--mmbb-text-muted);
+    font-size: .78rem;
+}
+.mmbb-stat-tile > strong {
+    overflow-wrap: anywhere;
+    font-size: .88rem;
+}
+.mmbb-stat-tile code { color: inherit; font-size: inherit; }
+
+/* Bootstrap groups inherit the same compact geometry as standalone buttons. */
+.btn-group-sm > .btn,
+.btn-group > .btn.btn-sm {
+    min-height: var(--mmbb-control-height-sm);
+    padding-top: .34rem;
+    padding-bottom: .34rem;
+    font-size: .8rem;
+    font-weight: 600;
+}
+
+/* Neutral badges should look identical everywhere, including counts/statuses. */
+.mmbb-content .badge.text-bg-light,
+.mmbb-content .badge.bg-light {
+    background: var(--mmbb-subtle-bg) !important;
+    border-color: var(--mmbb-border) !important;
+    color: var(--mmbb-text-muted) !important;
+}
+
+/* Modals and offcanvas panels share the card language. */
+.modal-content {
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    box-shadow: 0 .5rem 1.5rem rgba(16, 24, 40, .14);
+    overflow: hidden;
+}
+.modal-header,
+.offcanvas-header {
+    min-height: var(--mmbb-card-header-height);
+    padding: .65rem var(--mmbb-space-3);
+    background: var(--mmbb-panel-bg) !important;
+    border-bottom: 1px solid var(--mmbb-border);
+}
+.modal-title { font-weight: 700; }
+.modal-body { padding: var(--mmbb-space-3); }
+.modal-footer {
+    padding: .75rem var(--mmbb-space-3);
+    border-top: 1px solid var(--mmbb-border);
+    background: var(--mmbb-subtle-bg);
+}
+
+/* Dropdowns, pagination and progress bars no longer fall back to Bootstrap's
+   different radius/shadow language. */
+.dropdown-menu {
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    box-shadow: 0 .35rem 1rem rgba(16, 24, 40, .12);
+    padding: .35rem;
+}
+.dropdown-item {
+    border-radius: var(--mmbb-radius-sm);
+    font-size: .84rem;
+}
+.dropdown-item:active,
+.dropdown-item.active { background: var(--mmbb-primary); }
+
+.pagination { gap: .2rem; }
+.page-link {
+    border-color: var(--mmbb-border);
+    border-radius: var(--mmbb-radius-sm) !important;
+    color: var(--mmbb-primary);
+    font-size: .8rem;
+}
+.page-item.active .page-link {
+    background: var(--mmbb-primary);
+    border-color: var(--mmbb-primary);
+}
+
+.progress {
+    border-radius: var(--mmbb-radius-sm);
+    background: #e5e7eb;
+}
+.progress-bar { background: var(--mmbb-primary); }
+
+/* Consistent code/output surfaces. */
+.mmbb-content pre,
+.mmbb-code-surface {
+    border-radius: var(--mmbb-radius-lg) !important;
+}
+
+/* Keep native Bootstrap utility radii from visually diverging inside content. */
+.mmbb-content .rounded,
+.mmbb-content .rounded-3 { border-radius: var(--mmbb-radius-lg) !important; }
+
+@media (max-width: 991.98px) {
+    .mmbb-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 575.98px) {
+    .mmbb-stat-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ---------- TEKO portal-wide uniformity (3.20.1) ----------
+ * configs_editor.php is the visual reference: one page header, calm cards,
+ * consistent gutters, control geometry, table headers and section rhythm.
+ */
+.mmbb-content {
+    background: var(--mmbb-bg);
+}
+
+.mmbb-page,
+.mmbb-main {
+    display: block;
+}
+
+.mmbb-page > .mmbb-module-header,
+.mmbb-main > .mmbb-module-header {
+    padding-bottom: .15rem;
+    border-bottom: 1px solid rgba(195, 202, 214, .62);
+    margin-bottom: 1.1rem;
+}
+
+.mmbb-page-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .5rem;
+    min-height: var(--mmbb-control-height-sm);
+}
+.mmbb-page-toolbar-spacer { flex: 1 1 auto; }
+
+/* Every first-level work area follows the same vertical rhythm. */
+.mmbb-main > section,
+.mmbb-main > .card,
+.mmbb-main > .shadow-card,
+.mmbb-main > .cfg-workspace,
+.mmbb-main > .gce-workspace,
+.mmbb-main > .pm-grid,
+.mmbb-main > .ms-grid,
+.mmbb-main > .ae-grid,
+.mmbb-main > .ds-kpis,
+.mmbb-main > .ds-bottom {
+    margin-bottom: 1rem;
+}
+
+/* Remove Bootstrap's more pronounced per-page shadow variants. */
+.mmbb-content .card.shadow,
+.mmbb-content .card.shadow-sm,
+.mmbb-content .shadow-card {
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .10) !important;
+}
+
+/* Cards are the canonical panel surface everywhere. */
+.mmbb-content .card,
+.mmbb-content .shadow-card,
+.mmbb-content .toolbar-card {
+    background: var(--mmbb-surface);
+    border-color: var(--mmbb-border) !important;
+    border-radius: var(--mmbb-radius-lg) !important;
+}
+
+/* Compact, consistent card titles. */
+.mmbb-content .mmbb-card-header,
+.mmbb-content .card-header {
+    min-height: var(--mmbb-card-header-height);
+    padding: .6rem var(--mmbb-space-3);
+    background: var(--mmbb-panel-bg) !important;
+    border-color: var(--mmbb-border) !important;
+    font-size: .88rem;
+    font-weight: 700;
+}
+
+/* Grid pages keep their functionality, but use the same proportions/rhythm. */
+.pm-grid,
+.ms-grid,
+.ae-grid,
+.ds-bottom {
+    gap: 1rem !important;
+}
+.pm-grid { grid-template-columns: minmax(300px, 360px) minmax(0, 1fr) !important; }
+.ms-grid { grid-template-columns: minmax(300px, 360px) minmax(0, 1fr) !important; }
+.ae-grid { grid-template-columns: minmax(340px, .9fr) minmax(500px, 1.35fr) !important; }
+
+/* Desired-state KPI cards use the same neutral tile language as the rest of TEKO. */
+.ds-kpis {
+    gap: .75rem !important;
+}
+.ds-kpi {
+    min-height: 96px !important;
+    padding: .75rem .85rem !important;
+    border: 1px solid var(--mmbb-border) !important;
+    border-radius: var(--mmbb-radius-lg) !important;
+    background: var(--mmbb-surface) !important;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .08);
+}
+.ds-kpi strong { font-size: 1.45rem !important; }
+.ds-kpi .bi { font-size: 1.55rem !important; opacity: .22 !important; }
+.ds-kpi-ok,
+.ds-kpi-drift,
+.ds-kpi-err { border-color: var(--mmbb-border) !important; }
+
+/* ModSecurity metric cards match the desired-state/overview tile scale. */
+.ms-kpi {
+    font-size: 1.35rem !important;
+    line-height: 1.2;
+}
+.ms-grid .row.g-3 > [class*="col-"] > .card {
+    height: 100%;
+}
+.ms-grid .row.g-3 .card-body {
+    min-height: 92px;
+}
+
+/* Server selector/list surfaces look like editor-side lists rather than raw boxes. */
+.pm-servers,
+.git-deploy-server-table,
+.git-deploy-server-list,
+.ae-key {
+    border: 1px solid var(--mmbb-border) !important;
+    border-radius: var(--mmbb-radius-lg) !important;
+    background: var(--mmbb-subtle-bg) !important;
+}
+
+/* Tables are visually identical across pages. */
+.mmbb-content .table-responsive {
+    border-radius: 0 0 var(--mmbb-radius-lg) var(--mmbb-radius-lg);
+}
+.mmbb-content .table > :not(caption) > * > * {
+    border-color: #e2e6ec;
+}
+
+/* Page-local secondary headings should not compete with the canonical module header. */
+.mmbb-content section h2,
+.mmbb-content .card h2 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* Keep editor pages' red accent only where they intentionally use it; all generic
+ * primary controls and navigation remain in the shared blue TEKO language. */
+.configuration-editor-page .cfg-workspace,
+.configuration-editor-page .gce-workspace {
+    border-color: var(--mmbb-border) !important;
+}
+
+@media (max-width: 1000px) {
+    .pm-grid,
+    .ms-grid,
+    .ae-grid,
+    .ds-bottom {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* ---------- Login uses the same TEKO design language ---------- */
+.mmbb-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: var(--mmbb-bg);
+}
+.mmbb-login-shell { max-width: 420px; }
+.mmbb-login-card { overflow: hidden; }
+.mmbb-login-card .card-body { padding: 1.6rem; }
+.mmbb-login-card h1,
+.mmbb-login-card h2,
+.mmbb-login-card h3 { letter-spacing: -.015em; }
+
+/* ---------- TEKO compact workspace language (3.20.2) ---------- */
+.teko-workspace {
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--mmbb-surface);
+    box-shadow: 0 1px 3px rgba(16,24,40,.10);
+    overflow: hidden;
+}
+.teko-commandbar {
+    display: flex;
+    align-items: end;
+    gap: .65rem;
+    padding: .75rem .85rem;
+    background: var(--mmbb-panel-bg);
+    border-bottom: 1px solid var(--mmbb-border);
+}
+.teko-commandbar .form-label { margin-bottom: .25rem; }
+.teko-commandbar .teko-server-field { flex: 0 1 320px; min-width: 220px; }
+.teko-commandbar .teko-actions { display: flex; gap: .45rem; flex-wrap: wrap; }
+.teko-stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr));
+    gap: 0;
+    border-bottom: 1px solid var(--mmbb-border);
+}
+.teko-stat {
+    min-height: 72px;
+    padding: .72rem .85rem;
+    border-right: 1px solid var(--mmbb-border);
+    background: var(--mmbb-surface);
+}
+.teko-stat:last-child { border-right: 0; }
+.teko-stat-label { font-size: .72rem; color: var(--bs-secondary-color); font-weight: 600; margin-bottom: .15rem; }
+.teko-stat-value { font-size: 1rem; line-height: 1.25; font-weight: 700; word-break: break-word; }
+.teko-section { padding: .9rem; }
+.teko-section + .teko-section { border-top: 1px solid var(--mmbb-border); }
+.teko-section-title { font-size: .88rem; font-weight: 700; margin-bottom: .75rem; }
+.teko-inline-note {
+    margin-top: .7rem;
+    padding: .6rem .7rem;
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius);
+    background: var(--mmbb-panel-bg);
+    color: var(--bs-secondary-color);
+    font-size: .78rem;
+}
+.teko-status-alert { padding: .55rem .75rem; margin-bottom: .75rem; font-size: .82rem; }
+.teko-help { font-size: .76rem; color: var(--bs-secondary-color); line-height: 1.35; }
+@media (max-width: 900px) {
+    .teko-commandbar { align-items: stretch; flex-direction: column; }
+    .teko-commandbar .teko-server-field { width: 100%; min-width: 0; }
+    .teko-stat-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    .teko-stat:nth-child(2) { border-right: 0; }
+    .teko-stat:nth-child(-n+2) { border-bottom: 1px solid var(--mmbb-border); }
+}
+@media (max-width: 575.98px) {
+    .teko-stat-strip { grid-template-columns: 1fr; }
+    .teko-stat { border-right: 0; border-bottom: 1px solid var(--mmbb-border); }
+    .teko-stat:last-child { border-bottom: 0; }
+    .teko-actions .btn { width: 100%; }
+}
+
+/* ---------- Portal clarity / contrast pass (3.20.3) ----------
+ * Ziel: weniger ausgewaschene Flaechen, klarere Hierarchie und bessere
+ * Erkennbarkeit von Navigation, Tabellen, Formularen und Aktionen.
+ */
+:root {
+    --mmbb-primary: #173f93;
+    --mmbb-primary-dark: #102b68;
+    --mmbb-primary-soft: #dbe6f8;
+    --mmbb-bg: #e8ecf2;
+    --mmbb-surface: #ffffff;
+    --mmbb-border: #aeb8c8;
+    --mmbb-text: #111827;
+    --mmbb-text-muted: #465166;
+    --mmbb-panel-bg: #f1f4f8;
+    --mmbb-subtle-bg: #f7f9fc;
+    --bs-body-color: #111827;
+    --bs-secondary-color: #465166;
+    --bs-border-color: #aeb8c8;
+}
+
+body {
+    background: var(--mmbb-bg);
+    color: var(--mmbb-text);
+}
+
+/* Hauptrahmen klar vom Hintergrund absetzen. */
+.mmbb-sidebar {
+    border-right-color: #9da8b9;
+    box-shadow: 2px 0 8px rgba(15, 23, 42, .05);
+}
+.mmbb-content { background: transparent; }
+
+/* Navigation: dunklere Grundschrift, deutlichere Gruppen und Hover-Zustaende. */
+.mmbb-nav-group {
+    color: #586378 !important;
+    font-weight: 800;
+}
+.mmbb-sidebar .nav-link {
+    color: #2f3a4d;
+    font-weight: 550;
+}
+.mmbb-sidebar .nav-link i { color: #6f7d91; }
+.mmbb-sidebar .nav-link:hover {
+    background: #e5ecf8;
+    color: #102b68;
+}
+.mmbb-sidebar .nav-link.active {
+    background: #24479d;
+    box-shadow: inset 3px 0 0 #8fb3ff;
+}
+
+/* Karten und Workspaces erhalten sichtbarere Konturen und weniger milchige Header. */
+.card,
+.teko-workspace {
+    border-color: #aeb8c8;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, .10);
+}
+.card-header,
+.teko-commandbar,
+.modal-header,
+.offcanvas-header {
+    background: #edf1f6 !important;
+    border-bottom-color: #aeb8c8;
+}
+.card-header { color: #172033; }
+
+/* Modul-Titel und Hilfstexte besser voneinander trennen. */
+.mmbb-page-title { color: #111827; font-weight: 750; }
+.mmbb-page-subtitle,
+.breadcrumb,
+.form-text,
+.teko-help,
+.teko-inline-note { color: #465166 !important; }
+.mmbb-page-heading-icon {
+    background: #dbe6f8;
+    border-color: #a9b9d4;
+    color: #173f93;
+}
+
+/* Formulare: weisse Eingabeflaechen und deutlichere Feldgrenzen. */
+.form-label { color: #344054; font-weight: 700; }
+.form-control,
+.form-select,
+.input-group-text {
+    border-color: #a8b3c3;
+}
+.form-control,
+.form-select { background-color: #fff; color: #172033; }
+.form-control::placeholder { color: #737f91; opacity: 1; }
+.form-control:hover,
+.form-select:hover { border-color: #7f8da2; }
+.form-control:focus,
+.form-select:focus {
+    border-color: #24479d;
+    box-shadow: 0 0 0 3px rgba(36, 71, 157, .17);
+}
+
+/* Outline-Aktionen duerfen nicht wie deaktivierte Controls wirken. */
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-success,
+.btn-outline-danger,
+.btn-outline-warning {
+    border-color: #9eabbc;
+    box-shadow: 0 1px 1px rgba(15, 23, 42, .04);
+}
+.btn-outline-secondary { color: #263244; }
+.btn-outline-primary { color: #173f93; }
+.btn-outline-success { color: #116b34; }
+.btn-outline-danger { color: #a61b1b; }
+.btn-outline-warning { color: #96500a; }
+.btn-outline-secondary:hover { background: #e7ebf1; border-color: #7e8b9f; color: #172033; }
+
+/* Tabellen: Kopf, Zeilentrenner und Hover klarer sichtbar. */
+.mmbb-content .table thead th {
+    background: #e9edf3;
+    color: #445065;
+    border-top: 1px solid #aeb8c8;
+    border-bottom: 1px solid #9faabb;
+    font-weight: 800;
+}
+.mmbb-content .table > :not(caption) > * > * {
+    border-color: #cfd6df;
+}
+.mmbb-content .table tbody tr { background: #fff; }
+.mmbb-content .table tbody tr:nth-of-type(even) { background: #fbfcfe; }
+.table-hover tbody tr:hover,
+.mmbb-content .table-hover tbody tr:hover {
+    background: #e5edf9 !important;
+}
+.mmbb-content .table tbody td { color: #172033; }
+
+/* Filter-/Status-Bereiche sichtbar gruppieren. */
+.status-summary-bar,
+.teko-inline-note,
+.mmbb-stat-tile {
+    border-color: #aeb8c8 !important;
+}
+.mmbb-stat-tile { background: #f4f6f9; }
+
+/* Dropdowns/Modals nicht in den Hintergrund verschwimmen lassen. */
+.dropdown-menu,
+.modal-content {
+    border-color: #a8b3c3;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, .16);
+}
+.dropdown-item { color: #263244; }
+.dropdown-item:hover,
+.dropdown-item:focus { background: #e8eef8; color: #102b68; }
+
+/* Sekundaere Light-Badges mit echter Kontur statt fast unsichtbarer Flaeche. */
+.mmbb-content .badge.text-bg-light,
+.mmbb-content .badge.bg-light {
+    background: #eef2f6 !important;
+    border: 1px solid #aeb8c8 !important;
+    color: #344054 !important;
+}
+
+/* 3.0.14 - einheitliche portalweite Aktionsrueckmeldungen */
+.mmbb-feedback-host { z-index: 1095; width: min(430px, calc(100vw - 1rem)); }
+.mmbb-feedback-toast { background:#fff; box-shadow:0 .5rem 1.25rem rgba(27,43,61,.18); border:1px solid #cbd5e1 !important; }
+.mmbb-feedback-header { border-bottom:1px solid #d9e1ea; color:#25364b; }
+.mmbb-feedback-success { background:#eaf7f0; }
+.mmbb-feedback-danger { background:#fdecec; }
+.mmbb-feedback-warning { background:#fff6d8; }
+.mmbb-feedback-info { background:#edf5ff; }
+.mmbb-feedback-message { font-weight:600; color:#26384d; white-space:pre-wrap; }
+.mmbb-feedback-details { max-height:220px; overflow:auto; white-space:pre-wrap; padding:.6rem; border:1px solid #d8e0e8; border-radius:.45rem; background:#f7f9fb; font-size:.78rem; }
+
+/* Global activity indicator -------------------------------------------------
+ * Central portal-wide feedback for remote/API/service operations.
+ * It intentionally appears after a short delay so fast requests do not flicker.
+ */
+.mmbb-busy-indicator {
+    position: fixed;
+    top: 1.15rem;
+    left: calc(var(--mmbb-sidebar-width) + (100vw - var(--mmbb-sidebar-width)) / 2);
+    right: auto;
+    bottom: auto;
+    z-index: 11050;
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    min-width: 15rem;
+    max-width: min(34rem, calc(100vw - var(--mmbb-sidebar-width) - 2rem));
+    padding: .72rem 1rem;
+    border: 1px solid rgba(37, 99, 235, .22);
+    border-radius: .7rem;
+    background: rgba(255, 255, 255, .985);
+    box-shadow: 0 .55rem 1.55rem rgba(15, 23, 42, .18);
+    color: #172033;
+    opacity: 0;
+    transform: translate(-50%, -.45rem);
+    pointer-events: none;
+    transition: opacity .16s ease, transform .16s ease;
+}
+
+.mmbb-busy-indicator.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.mmbb-busy-spinner {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex: 0 0 1.25rem;
+    border: .18rem solid rgba(37, 99, 235, .18);
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: mmbb-busy-spin .75s linear infinite;
+}
+
+.mmbb-busy-copy { min-width: 0; line-height: 1.2; }
+.mmbb-busy-title { display:block; font-weight:700; font-size:.88rem; }
+.mmbb-busy-message {
+    display:block;
+    margin-top:.08rem;
+    color:#667085;
+    font-size:.78rem;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+body.mmbb-page-leaving .mmbb-busy-indicator,
+body.mmbb-page-leaving .mmbb-busy-indicator.is-visible {
+    top: 50%;
+    left: calc(var(--mmbb-sidebar-width) + (100vw - var(--mmbb-sidebar-width)) / 2);
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 991.98px) {
+    .mmbb-busy-indicator,
+    body.mmbb-page-leaving .mmbb-busy-indicator,
+    body.mmbb-page-leaving .mmbb-busy-indicator.is-visible {
+        left: 50%;
+        max-width: calc(100vw - 1.5rem);
+    }
+}
+
+@keyframes mmbb-busy-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .mmbb-busy-spinner { animation-duration: 1.6s; }
+    .mmbb-busy-indicator { transition: none; }
+}

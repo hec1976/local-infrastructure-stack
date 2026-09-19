@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "servers": [
+    {
+      "name": "teko",
+      "url": "https://127.0.0.1:5008",
+      "groups": [
+        "local",
+        "mail"
+      ],
+      "labels": {
+        "env": "lab",
+        "role": "mailrelay"
+      }
+    },
+    {
+      "name": "mail01.example.internal",
+      "url": "https://192.0.2.21:5008",
+      "groups": [
+        "linux",
+        "mail",
+        "canary"
+      ],
+      "labels": {
+        "env": "prod",
+        "role": "mailrelay"
+      },
+      "token_file": "/opt/service/config-manager/tokens/mail01.example.internal.token",
+      "tls": {
+        "verify": true,
+        "verify_host": true,
+        "ca_file": "/opt/service/config-manager/ca/mail01.example.internal.crt"
+      }
+    }
+  ]
+}

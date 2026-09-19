@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd -P)"
+TM="$ROOT/bin/teko-agent-token-manager.py"
+SM="$ROOT/config-manager-standalone/public/server_management.php"
+RS="$ROOT/setup_remote_config_agent.sh"
+CM="$ROOT/setup_config_manager.sh"
+grep -q "REPAIR_BUNDLE='/opt/service/config-manager/agent-repair-bundle.tar.gz'" "$TM"
+grep -q "if action=='repair'" "$TM"
+grep -q "repair_agent(req,srv)" "$TM"
+grep -q "agent_repair" "$SM"
+grep -q "Agent Lifecycle" "$SM"
+grep -q 'id="lcRepair"' "$SM"
+grep -q "lifecycleAction('reset')" "$SM"
+grep -q 'out={"config-agent-global": e}' "$RS"
+grep -q 'CONFIG_AGENT_FORGEJO_TOKEN_FILE="$forgejo_token"' "$TM"
+grep -q 'agent-repair-bundle.tar.gz' "$CM"
+grep -q '"$SCRIPT_ROOT/teko-stack.conf"' "$CM"
+grep -q 'teko-agent-bundle/teko-stack.conf' "$CM"
+grep -q 'Repair-Bundle unvollstaendig: \$required fehlt' "$TM"
+echo 'remote_agent_repair_test: PASS'

@@ -1,0 +1,205 @@
+{
+  "config-agent-global": {
+    "path": "/opt/service/config-agent/global.json",
+    "category": "config",
+    "service": "config-agent.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0640",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "config-agent-git-deploy": {
+    "path": "/opt/service/config-agent/git_deploy.json",
+    "category": "config",
+    "service": "config-agent.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0640",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "apache-listen": {
+    "path": "/etc/apache2/listen.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "apache-config-manager-vhost": {
+    "path": "/etc/apache2/vhosts.d/config-manager.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "apache-forgejo-vhost": {
+    "path": "/etc/apache2/vhosts.d/forgejo-teko.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "apache-grafana-vhost": {
+    "path": "/etc/apache2/vhosts.d/grafana-teko.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "postfix-main": {
+    "path": "/etc/postfix/main.cf",
+    "category": "mail",
+    "service": "postfix.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "start": [],
+      "stop": [],
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "postfix-master": {
+    "path": "/etc/postfix/master.cf",
+    "category": "mail",
+    "service": "postfix.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "start": [],
+      "stop": [],
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "monit-teko-stack": {
+    "path": "/etc/monit.d/teko-stack.monitrc",
+    "category": "monitoring",
+    "service": "monit.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0600",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "loki-config": {
+    "path": "/srv/observability/loki.yaml",
+    "category": "monitoring",
+    "service": "loki.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "grafana-loki-datasource": {
+    "path": "/srv/observability/grafana/provisioning/datasources/loki.yaml",
+    "category": "monitoring",
+    "service": "grafana.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  },
+  "grafana-dashboard-provider": {
+    "path": "/srv/observability/grafana/provisioning/dashboards/teko.yaml",
+    "category": "monitoring",
+    "service": "grafana.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    },
+    "desired_status": "running"
+  }
+}

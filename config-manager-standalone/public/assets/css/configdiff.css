@@ -1,0 +1,185 @@
+.configdiff-page {
+  max-width: none;
+}
+
+.configdiff-page .gap-x-4 {
+  column-gap: 1.5rem;
+}
+
+.configdiff-page .gap-y-2 {
+  row-gap: .5rem;
+}
+
+.configdiff-source {
+  min-height: 17rem;
+  resize: vertical;
+  tab-size: 4;
+  white-space: pre;
+  overflow: auto;
+  line-height: 1.42;
+}
+
+.configdiff-privacy {
+  font-size: .93rem;
+}
+
+.configdiff-result-card {
+  min-height: 24rem;
+}
+
+.configdiff-table-wrap {
+  max-height: 68vh;
+  overflow: auto;
+  position: relative;
+}
+
+.configdiff-table {
+  table-layout: fixed;
+  width: 100%;
+  font-family: var(--bs-font-monospace);
+  font-size: .82rem;
+  line-height: 1.35;
+}
+
+.configdiff-table thead th {
+  background: var(--bs-tertiary-bg);
+  border-bottom-width: 2px;
+  z-index: 3;
+  padding: .55rem .45rem;
+}
+
+.configdiff-table td {
+  vertical-align: top;
+  padding: .16rem .4rem;
+  border-color: var(--bs-border-color-translucent);
+}
+
+.configdiff-table .configdiff-line-number {
+  width: 4.2rem;
+  min-width: 4.2rem;
+  text-align: right;
+  color: var(--bs-secondary-color);
+  background: var(--bs-tertiary-bg);
+  user-select: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.configdiff-table .configdiff-marker {
+  width: 2rem;
+  min-width: 2rem;
+  text-align: center;
+  user-select: none;
+  font-weight: 700;
+}
+
+.configdiff-table td.configdiff-code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 4;
+}
+
+.configdiff-row-equal td.configdiff-code {
+  background: var(--bs-body-bg);
+}
+
+.configdiff-row-change td.configdiff-code,
+.configdiff-row-change td.configdiff-marker {
+  background: rgba(255, 193, 7, .16);
+}
+
+.configdiff-row-delete td.configdiff-left-code,
+.configdiff-row-delete td.configdiff-marker {
+  background: rgba(220, 53, 69, .15);
+}
+
+.configdiff-row-insert td.configdiff-right-code,
+.configdiff-row-insert td.configdiff-marker {
+  background: rgba(25, 135, 84, .15);
+}
+
+.configdiff-row-delete td.configdiff-right-code,
+.configdiff-row-insert td.configdiff-left-code,
+.configdiff-row-change td.configdiff-code:empty {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 6px,
+    rgba(127, 127, 127, .07) 6px,
+    rgba(127, 127, 127, .07) 12px
+  );
+}
+
+.configdiff-inline-delete {
+  background: rgba(220, 53, 69, .28);
+  border-radius: .16rem;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.configdiff-inline-insert {
+  background: rgba(25, 135, 84, .30);
+  border-radius: .16rem;
+}
+
+.configdiff-comment {
+  opacity: .78;
+  font-style: italic;
+}
+
+.configdiff-current-change td {
+  box-shadow: inset 0 2px 0 var(--bs-primary), inset 0 -2px 0 var(--bs-primary);
+}
+
+.configdiff-empty {
+  min-height: 22rem;
+  display: grid;
+  place-content: center;
+}
+
+.configdiff-summary .badge {
+  font-weight: 600;
+}
+
+.configdiff-unified-table .configdiff-line-number {
+  width: 4.2rem;
+}
+
+.configdiff-unified-table .configdiff-marker {
+  width: 2.2rem;
+}
+
+.configdiff-unified-table tr.configdiff-row-delete td.configdiff-code {
+  background: rgba(220, 53, 69, .15);
+}
+
+.configdiff-unified-table tr.configdiff-row-insert td.configdiff-code {
+  background: rgba(25, 135, 84, .15);
+}
+
+.configdiff-unified-table tr.configdiff-row-change.configdiff-unified-delete td.configdiff-code {
+  background: rgba(220, 53, 69, .15);
+}
+
+.configdiff-unified-table tr.configdiff-row-change.configdiff-unified-insert td.configdiff-code {
+  background: rgba(25, 135, 84, .15);
+}
+
+@media (max-width: 1199.98px) {
+  .configdiff-source {
+    min-height: 13rem;
+  }
+
+  .configdiff-table-wrap {
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .configdiff-table {
+    min-width: 980px;
+  }
+
+  .configdiff-toolbar .btn {
+    flex: 1 1 auto;
+  }
+}

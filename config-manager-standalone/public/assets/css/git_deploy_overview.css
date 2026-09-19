@@ -1,0 +1,51 @@
+.git-deploy-overview-page {
+    max-width: 1500px;
+}
+
+.gdo-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+    gap: .75rem;
+}
+
+.gdo-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    padding: .8rem 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-left: .3rem solid var(--bs-secondary);
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--bs-body-bg);
+}
+
+.gdo-summary span {
+    color: var(--bs-secondary-color);
+    font-size: .82rem;
+}
+
+.gdo-summary strong {
+    font-size: 1.35rem;
+}
+
+.gdo-summary.is-current { border-left-color: var(--bs-success); }
+.gdo-summary.is-update { border-left-color: var(--bs-warning); }
+.gdo-summary.is-missing { border-left-color: var(--bs-secondary); }
+.gdo-summary.is-error { border-left-color: var(--bs-danger); }
+.gdo-summary.is-disabled { border-left-color: var(--bs-gray-500); }
+
+.gdo-table th {
+    white-space: nowrap;
+}
+
+.gdo-commit {
+    display: inline-block;
+    min-width: 10ch;
+    white-space: nowrap;
+    font-size: .88rem;
+}
+
+@media (max-width: 991.98px) {
+    .gdo-table { min-width: 900px; }
+}

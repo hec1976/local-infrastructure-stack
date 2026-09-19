@@ -1,0 +1,359 @@
+/* Extracted from mgmt/config-manager/public/index.php. Do not put page layout CSS back into PHP unless it is dynamic. */
+html, body { height:auto !important; overflow:auto !important; }
+#contentScroll { height:auto !important; overflow:visible !important; }
+    .modal-backdrop.show { opacity: 0.2; }
+    .table td, .table th { vertical-align: middle !important; }
+    .container { overflow: visible !important; }
+    .table-actions .btn { white-space:nowrap; }
+    .table-actions .action-menu-btn { min-width:5.7rem; }
+    .group-row td { font-weight: 600; background: var(--ch-bg-soft); border-top: 2px solid var(--ch-border); }
+
+    /* Backup-Vorschau */
+    #backupDiffContent { max-height: 40vh; overflow: auto; }
+    #viewBackupModal pre {
+      max-height: 40vh;
+      overflow: auto;
+      font-size: .95rem;
+      font-family: monospace;
+    }
+    .split-title { letter-spacing: .03em; }
+
+    /* Status-Übersichtsleiste */
+    .status-summary-bar{
+      background: var(--ch-bg-soft);
+      border: 1px dashed var(--ch-border);
+      border-radius:.5rem;
+      padding:.5rem .75rem;
+    }
+
+.card, .card-body,
+#ordersTable_wrapper,
+#ordersTable,
+#ordersTable .table-actions {
+  overflow: visible !important;
+}
+/* Sicherheitshalber hohen z-index fürs Menü */
+.dropdown-menu { z-index: 2000; }
+
+/* 3.10.9: replace page-local inline geometry with reusable classes. */
+.mmbb-filter-field-sm { min-width: 220px; max-width: 320px; }
+.mmbb-filter-field-search { min-width: 320px; max-width: 640px; flex: 1 1 360px; }
+#configsTable .col-id { width: 20%; }
+#configsTable .col-status { width: 18%; }
+#configsTable .col-actions { width: 22%; }
+.backup-actions-col { width: 400px; }
+@media (max-width: 767.98px) {
+  .mmbb-filter-field-sm, .mmbb-filter-field-search { min-width: 0; max-width: none; width: 100%; }
+  .backup-actions-col { width: auto; }
+}
+
+/* 3.10.12: Text-Aktionsmenüs dürfen nicht wie reine Icon-Buttons auf 2.1rem
+   zusammengedrückt werden. Icon-Buttons behalten weiterhin die globale Geometrie. */
+.table-actions .btn-group {
+  vertical-align: middle;
+  margin-left: .15rem !important;
+  margin-right: .15rem;
+}
+.table-actions .btn-group .action-menu-btn {
+  width: auto;
+  min-width: 5.7rem;
+  height: 2.1rem;
+  padding: 0 .65rem;
+  margin: 0;
+  gap: .35rem;
+  justify-content: center;
+}
+.table-actions .action-menu-btn::after {
+  margin-left: .15rem;
+}
+
+/* 3.10.15: Backup-Dialog mit mittlerem, ruhigem Kontrast. */
+.backup-manager-modal .modal-dialog {
+  max-width: 900px;
+}
+.backup-manager-modal .modal-content {
+  overflow: hidden;
+}
+.backup-manager-modal .modal-header {
+  min-height: 3.6rem;
+  padding: .7rem 1rem;
+  background: #fafbfe;
+  border-bottom: 1px solid #d9dee8;
+}
+.backup-modal-heading {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  min-width: 0;
+}
+.backup-modal-icon {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d6deed;
+  border-radius: var(--ch-radius, .5rem);
+  background: #f2f5fb;
+  color: var(--ch-primary, #244394);
+}
+.backup-modal-heading .modal-title {
+  margin: 0;
+  font-size: .96rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.backup-modal-subtitle {
+  margin-top: .1rem;
+  color: var(--ch-text-muted, #687386);
+  font-size: .75rem;
+}
+.backup-manager-modal .modal-body {
+  padding: .85rem 1rem 0;
+  background: #fff;
+}
+.backup-manager-modal .restoreResult:not(:empty) {
+  margin-bottom: .75rem;
+}
+.backup-table-shell {
+  border: 1px solid var(--ch-border);
+  border-radius: var(--ch-radius-lg, .6rem);
+  overflow: hidden;
+  background: #fff;
+}
+.backup-table-shell .dataTables_wrapper {
+  width: 100%;
+}
+.backup-dt-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: .55rem .7rem;
+  background: #fafbfc;
+  border-bottom: 1px solid #d9dee8;
+}
+.backup-dt-toolbar .dataTables_filter {
+  float: none;
+  margin: 0;
+}
+.backup-dt-toolbar .dataTables_filter label {
+  display: block;
+  margin: 0;
+  font-size: 0;
+}
+.backup-dt-toolbar .dataTables_filter input {
+  width: 240px;
+  height: 2rem;
+  margin: 0 !important;
+  padding: .35rem .65rem;
+  border: 1px solid var(--ch-border);
+  border-radius: var(--ch-radius, .5rem);
+  background: #fff;
+  font-size: .82rem;
+  box-shadow: none;
+}
+.backup-dt-toolbar .dataTables_filter input:focus {
+  border-color: var(--ch-primary, #244394);
+  outline: 0;
+  box-shadow: 0 0 0 .16rem rgba(36,67,148,.1);
+}
+.backup-table {
+  width: 100% !important;
+  margin: 0 !important;
+  table-layout: fixed;
+}
+.backup-table thead th {
+  height: 2.45rem;
+  padding: .55rem .7rem !important;
+  background: #f5f6f8 !important;
+  color: #566071;
+  border-bottom: 1px solid #d9dee6 !important;
+  font-size: .7rem;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.backup-table tbody td {
+  height: 3.45rem;
+  padding: .55rem .7rem !important;
+  border-color: #e3e6ec !important;
+  vertical-align: middle;
+  background: #fff;
+}
+.backup-file-cell {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+}
+.backup-file-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex: 0 0 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .4rem;
+  background: #f4f6fb;
+  color: #244394;
+  border: 1px solid #e0e5ef;
+}
+.backup-file-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: .84rem;
+  font-weight: 600;
+}
+.backup-actions-col {
+  width: 430px;
+}
+.backup-row-actions {
+  white-space: nowrap;
+}
+.backup-action-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: .35rem;
+}
+.backup-action-group .btn,
+.backup-action-group .restoreForm {
+  margin: 0 !important;
+}
+.backup-action-group .restoreForm {
+  display: inline-flex !important;
+}
+.backup-action-group .btn {
+  min-height: 2rem;
+  padding-left: .65rem;
+  padding-right: .65rem;
+  white-space: nowrap;
+}
+
+.backup-table tbody tr:hover td {
+  background: #fafbfc;
+}
+.backup-action-group .mmbb-btn-secondary {
+  border-color: #c9d0da;
+  background: #fff;
+  color: #394354;
+}
+.backup-action-group .mmbb-btn-secondary:hover {
+  border-color: #aeb7c4;
+  background: #f4f6f8;
+  color: #202733;
+}
+.backup-action-group .mmbb-btn-warning {
+  border-color: #e4bd82;
+  background: #fffaf2;
+  color: #a35d12;
+}
+.backup-action-group .mmbb-btn-warning:hover {
+  border-color: #d59a4a;
+  background: #fff3df;
+  color: #84480c;
+}
+.backup-action-group .mmbb-btn-success {
+  border-color: #9ac8aa;
+  background: #f7fbf8;
+  color: #247344;
+}
+.backup-action-group .mmbb-btn-success:hover {
+  border-color: #78ad89;
+  background: #eef7f1;
+  color: #185f35;
+}
+.backup-dt-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 2.9rem;
+  padding: .45rem .65rem;
+  background: #fafbfc;
+  border-top: 1px solid #cbd3e2;
+}
+.backup-dt-footer .dataTables_paginate {
+  float: none;
+  margin: 0;
+  padding: 0;
+}
+.backup-manager-modal .modal-footer {
+  min-height: 3.3rem;
+  padding: .55rem 1rem;
+  background: #fafbfc;
+  border-top: 1px solid #e0e4ea;
+}
+.backup-empty-state {
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  color: var(--ch-text-muted, #687386);
+  text-align: center;
+}
+.backup-empty-state i { font-size: 1.45rem; }
+.backup-empty-state strong { color: var(--ch-text, #202633); }
+.backup-empty-state span { font-size: .8rem; }
+@media (max-width: 991.98px) {
+  .backup-manager-modal .modal-dialog { max-width: calc(100vw - 2rem); }
+  .backup-actions-col { width: 390px; }
+  .backup-action-group .btn { padding-left: .5rem; padding-right: .5rem; }
+}
+@media (max-width: 767.98px) {
+  .backup-manager-modal .modal-dialog { max-width: none; }
+  .backup-dt-toolbar { justify-content: stretch; }
+  .backup-dt-toolbar .dataTables_filter,
+  .backup-dt-toolbar .dataTables_filter input { width: 100%; }
+  .backup-table { table-layout: auto; }
+  .backup-actions-col { width: auto; }
+  .backup-row-actions { white-space: normal; }
+  .backup-action-group { justify-content: flex-start; flex-wrap: wrap; }
+}
+
+
+/* 3.10.16: Services & Configs – eindeutige Tabellenmetadaten und Aktionen. */
+#ordersTable .category-badge {
+  font-weight: 600;
+  min-width: 4.5rem;
+}
+#ordersTable .service-name {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+#ordersTable .table-actions {
+  white-space: nowrap;
+  text-align: left !important;
+}
+#ordersTable .table-actions > .btn,
+#ordersTable .table-actions > .btn-group {
+  margin-right: .25rem;
+}
+#ordersTable .row-action-btn {
+  width: auto;
+  min-width: 6.6rem;
+  gap: .35rem;
+  justify-content: center;
+}
+#ordersTable .col-actions {
+  min-width: 15rem;
+}
+#ordersTable .col-status {
+  min-width: 8rem;
+}
+/* 3.0.10: Restore ist eine primaere Zeilenaktion und bleibt immer sichtbar. */
+.table-actions .restore-row-btn {
+  width: auto;
+  min-width: 5.4rem;
+  height: 2.1rem;
+  padding: 0 .65rem;
+  gap: .35rem;
+  justify-content: center;
+  vertical-align: middle;
+}

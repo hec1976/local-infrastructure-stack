@@ -1,0 +1,25 @@
+# Text normalization
+* text=auto eol=lf
+
+# Scripts keep LF line endings
+*.sh text eol=lf
+*.py text eol=lf
+*.pl text eol=lf
+*.pm text eol=lf
+*.php text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.conf text eol=lf
+*.ini text eol=lf
+*.md text eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+
+# Intentional prebuilt offline/runtime binary
+monit-exporter/bin/* binary

@@ -1,0 +1,70 @@
+# -----------------------------------------------------------------------------
+# TEKO Local Stack - repository ignore rules
+# -----------------------------------------------------------------------------
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+*.orig
+*.rej
+.idea/
+.vscode/
+
+# Python / test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
+
+# Generic build/test artefacts
+build/
+dist/
+artifacts/
+reports/
+TEST_RESULTS.json
+*.log
+*.tmp
+*.temp
+
+# Runtime databases / state
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+
+# Secrets and runtime environment files
+*.env
+!.env.example
+*.token
+!*.token.example
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Config Agent runtime data
+config-agent/backup/*
+!config-agent/backup/.keep
+config-agent/tmp/*
+!config-agent/tmp/.keep
+
+# Config Manager runtime data
+config-manager-standalone/standalone/data/config-manager.env
+config-manager-standalone/standalone/data/users.json
+config-manager-standalone/standalone/data/audit_log.sqlite
+config-manager-standalone/standalone/data/audit_log.sqlite-*
+config-manager-standalone/standalone/data/desired_state.json
+
+# Go build scratch/output outside the intentional release binary
+monit-exporter/bin/*.tmp
+
+# Historical/generated validation output must not be committed.
+VALIDATION*.json
+*_TEST_REPORT*.md
+SANDBOX_TEST_REPORT*.md
+DEEP_TEST_REPORT*.md

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "policies": {
+    "monit-base-config": {
+      "enabled": false,
+      "description": "Gleiche Monit-Basiskonfiguration via Config Manager auf Linux-Server verteilen",
+      "source": {
+        "type": "config_manager",
+        "reference_server": "teko",
+        "source_config": "monit-teko-stack",
+        "target_config": "monit-teko-stack"
+      },
+      "selector": {
+        "groups": [
+          "local"
+        ],
+        "labels": {
+          "env": "lab"
+        }
+      },
+      "enforcement": "manual",
+      "max_targets": 20,
+      "rollout": {
+        "strategy": "canary",
+        "canary_selector": {
+          "groups": [
+            "canary"
+          ],
+          "labels": {}
+        },
+        "max_canary_targets": 2,
+        "require_canary_compliant": true
+      }
+    },
+    "software-scripts": {
+      "enabled": false,
+      "description": "Software/Skripte versioniert aus Git verteilen",
+      "source": {
+        "type": "git",
+        "deployment": "software-scripts",
+        "desired": {
+          "type": "tag",
+          "value": "v1.0.0"
+        }
+      },
+      "selector": {
+        "groups": [
+          "local"
+        ],
+        "labels": {
+          "env": "lab"
+        }
+      },
+      "enforcement": "manual",
+      "max_targets": 20,
+      "rollout": {
+        "strategy": "all"
+      }
+    }
+  }
+}

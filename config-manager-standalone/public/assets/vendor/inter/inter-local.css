@@ -1,0 +1,11 @@
+/*
+ * TEKO local UI font policy
+ *
+ * No font binaries are shipped in the repository. The UI uses the local
+ * operating-system/browser font stack. This keeps the repository small and
+ * avoids bundling separate font artefacts.
+ */
+:root {
+  --teko-ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                  "Helvetica Neue", Arial, sans-serif;
+}

@@ -1,0 +1,263 @@
+/* Config Manager Portal 3.10.1 - Git Repository Upload */
+.git-upload-page {
+    max-width: 1480px;
+}
+
+.git-upload-page .card {
+    border-color: color-mix(in srgb, var(--mmbb-border) 90%, var(--bs-body-color));
+}
+
+.git-upload-page #gitUploadMessage:not(.d-none) {
+    margin-bottom: 1rem;
+    padding: .8rem 1rem;
+    border-width: 1px;
+    border-left-width: 4px;
+    border-radius: var(--mmbb-radius-lg);
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.git-upload-workgroup {
+    padding: 1rem;
+    border: 1px solid color-mix(in srgb, var(--mmbb-border) 92%, var(--bs-body-color));
+    border-radius: var(--mmbb-radius-lg);
+    background: color-mix(in srgb, var(--bs-body-bg) 97%, var(--bs-tertiary-bg));
+}
+
+.git-upload-workgroup-title {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    margin-bottom: .9rem;
+    padding-bottom: .7rem;
+    border-bottom: 1px solid var(--mmbb-border);
+}
+
+.git-upload-workgroup-title > div {
+    display: flex;
+    align-items: baseline;
+    gap: .55rem;
+    min-width: 0;
+}
+
+.git-upload-workgroup-title strong {
+    font-size: .92rem;
+}
+
+.git-upload-workgroup-title small {
+    color: var(--mmbb-text-muted);
+    font-size: .76rem;
+}
+
+.git-upload-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.65rem;
+    height: 1.65rem;
+    flex: 0 0 1.65rem;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bs-primary) 13%, var(--bs-body-bg));
+    border: 1px solid color-mix(in srgb, var(--bs-primary) 38%, var(--mmbb-border));
+    color: var(--bs-primary);
+    font-size: .78rem;
+    font-weight: 750;
+}
+
+.git-upload-type-switch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.git-upload-runtime {
+    padding: .55rem .7rem;
+    border: 1px solid var(--mmbb-border);
+    border-radius: var(--mmbb-radius-lg);
+    background: color-mix(in srgb, var(--bs-tertiary-bg) 62%, var(--bs-body-bg));
+}
+
+.git-upload-runtime-main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .45rem .55rem;
+}
+
+.git-upload-runtime-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .36rem;
+    min-height: 1.85rem;
+    padding: .24rem .55rem;
+    border: 1px solid color-mix(in srgb, var(--mmbb-border) 92%, var(--bs-body-color));
+    border-radius: 999px;
+    background: var(--bs-body-bg);
+    font-size: .75rem;
+    line-height: 1.15;
+}
+
+.git-upload-runtime-chip > i {
+    color: var(--mmbb-text-muted);
+}
+
+.git-upload-runtime-chip > span {
+    color: var(--mmbb-text-muted);
+}
+
+.git-upload-runtime-chip > strong {
+    max-width: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .76rem;
+}
+
+.git-upload-runtime-details {
+    position: relative;
+    margin-left: auto;
+    min-width: 11rem;
+}
+
+.git-upload-runtime-details > summary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .35rem;
+    width: 100%;
+    padding: .28rem .35rem;
+    color: var(--mmbb-text-muted);
+    cursor: pointer;
+    list-style: none;
+    font-size: .75rem;
+    font-weight: 650;
+    user-select: none;
+}
+
+.git-upload-runtime-details > summary::-webkit-details-marker {
+    display: none;
+}
+
+.git-upload-runtime-details[open] > summary {
+    color: var(--bs-emphasis-color);
+}
+
+.git-upload-runtime-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: .45rem;
+    width: min(900px, calc(100vw - 7rem));
+    margin-top: .55rem;
+    margin-left: auto;
+    padding-top: .55rem;
+    border-top: 1px solid var(--mmbb-border);
+}
+
+.git-upload-runtime-detail-grid > div {
+    min-width: 0;
+}
+
+.git-upload-runtime-detail-grid span,
+.git-upload-runtime-detail-grid strong {
+    display: block;
+}
+
+.git-upload-runtime-detail-grid span {
+    margin-bottom: .1rem;
+    color: var(--mmbb-text-muted);
+    font-size: .69rem;
+}
+
+.git-upload-runtime-detail-grid strong {
+    overflow-wrap: anywhere;
+    font-size: .76rem;
+}
+
+.git-upload-changes {
+    table-layout: fixed;
+}
+
+.git-upload-changes th:first-child,
+.git-upload-changes td:first-child {
+    width: 8rem;
+}
+
+.git-upload-changes th:last-child,
+.git-upload-changes td:last-child {
+    width: 30%;
+}
+
+.git-upload-changes code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.git-upload-result {
+    min-height: 8rem;
+    max-height: 30rem;
+    overflow: auto;
+    padding: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--mmbb-subtle-bg);
+    font-size: .82rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#gitUploadWarnings ul {
+    max-height: 16rem;
+    overflow: auto;
+}
+
+#gitUploadProgressWrap {
+    height: 1.15rem;
+}
+
+@media (max-width: 991.98px) {
+    .git-upload-runtime-details {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .git-upload-runtime-details > summary {
+        justify-content: flex-start;
+    }
+
+    .git-upload-runtime-detail-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .git-upload-workgroup {
+        padding: .8rem;
+    }
+
+    .git-upload-workgroup-title > div {
+        display: block;
+    }
+
+    .git-upload-workgroup-title small {
+        display: block;
+        margin-top: .12rem;
+    }
+
+    .git-upload-runtime-chip {
+        width: 100%;
+        border-radius: .55rem;
+    }
+
+    .git-upload-runtime-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .git-upload-changes th:first-child,
+    .git-upload-changes td:first-child,
+    .git-upload-changes th:last-child,
+    .git-upload-changes td:last-child {
+        width: auto;
+    }
+}

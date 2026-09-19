@@ -1,0 +1,323 @@
+/* Extracted from mgmt/config-manager/public/configs_editor.php. Do not put page layout CSS back into PHP unless it is dynamic. */
+  .shadow-card {
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--mmbb-radius-lg);
+    box-shadow: 0 8px 28px rgba(0,0,0,.05);
+    background: var(--bs-body-bg);
+  }
+
+  .toolbar-card {
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--mmbb-radius-lg);
+    background: var(--bs-body-bg);
+  }
+
+  .accordion-item {
+    border: 1px solid rgba(176, 0, 32, .20);
+    border-radius: var(--mmbb-radius-lg);
+    overflow: hidden;
+    background: var(--bs-body-bg);
+    box-shadow: 0 5px 18px rgba(0,0,0,.035);
+  }
+
+  .accordion-item + .accordion-item {
+    margin-top: 16px;
+  }
+
+  .accordion-item.is-open {
+    border-color: rgba(139, 0, 28, .42);
+    box-shadow: 0 8px 26px rgba(139,0,28,.08);
+  }
+
+  .accordion-item.is-open > .acc-head {
+    background:
+      linear-gradient(90deg, rgba(139,0,28,.13), rgba(139,0,28,.04) 36%, var(--bs-tertiary-bg) 100%);
+    border-bottom-color: rgba(139,0,28,.28);
+  }
+
+  .acc-head {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    padding: .75rem .9rem;
+    background:
+      linear-gradient(90deg, rgba(139,0,28,.10), rgba(139,0,28,.03) 38%, var(--bs-tertiary-bg) 100%);
+    border-bottom: 1px solid rgba(139,0,28,.22);
+    border-left: 5px solid #8b001c;
+  }
+
+  .acc-head::after {
+    content: '';
+    display: block;
+    flex: 0 0 72px;
+    height: 2px;
+    margin-left: .25rem;
+    border-radius: 999px;
+    background: rgba(139,0,28,.45);
+  }
+
+  .acc-title {
+    display: flex;
+    gap: .65rem;
+    align-items: center;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .acc-sub {
+    color: var(--bs-secondary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 420px;
+  }
+
+  .chev-rotate i {
+    transition: transform .15s ease-in-out;
+  }
+
+  .chev-rotate[aria-expanded="true"] i {
+    transform: rotate(90deg);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .28rem .62rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 999px;
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-body-color);
+    font-size: .76rem;
+    line-height: 1;
+  }
+
+  .badge-pill {
+    border-radius: 999px;
+  }
+
+  .badge-cat-service,
+  .badge-cat-uncat,
+  .badge-cat-other,
+  .badge-svc-systemd,
+  .badge-svc-script,
+  .badge-svc-none {
+    border: 1px solid var(--bs-border-color);
+  }
+
+  :root {
+    --chip-service-bg: rgba(25,135,84,.14);
+    --chip-service-fg: var(--bs-success-text-emphasis);
+
+    --chip-uncat-bg: rgba(108,117,125,.14);
+    --chip-uncat-fg: var(--bs-secondary-color);
+
+    --chip-other-bg: rgba(13,202,240,.14);
+    --chip-other-fg: var(--bs-info-text-emphasis);
+
+    --chip-systemd-bg: var(--mmbb-ui-accent-soft);
+    --chip-systemd-fg: var(--bs-primary-text-emphasis);
+
+    --chip-script-bg: rgba(255,193,7,.18);
+    --chip-script-fg: var(--bs-warning-text-emphasis);
+
+    --chip-none-bg: rgba(108,117,125,.14);
+    --chip-none-fg: var(--bs-secondary-color);
+  }
+
+  .badge-cat-service {
+    background: var(--chip-service-bg);
+    color: var(--chip-service-fg);
+  }
+
+  .badge-cat-uncat {
+    background: var(--chip-uncat-bg);
+    color: var(--chip-uncat-fg);
+  }
+
+  .badge-cat-other {
+    background: var(--chip-other-bg);
+    color: var(--chip-other-fg);
+  }
+
+  .badge-svc-systemd {
+    background: var(--chip-systemd-bg);
+    color: var(--chip-systemd-fg);
+  }
+
+  .badge-svc-script {
+    background: var(--chip-script-bg);
+    color: var(--chip-script-fg);
+  }
+
+  .badge-svc-none {
+    background: var(--chip-none-bg);
+    color: var(--chip-none-fg);
+  }
+
+  .actions-list {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding-bottom: .25rem;
+  }
+
+  .actions-row {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    margin-bottom: .45rem;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .actions-row input.token {
+    flex: 0 0 240px;
+    min-width: 160px;
+  }
+
+  .actions-row input.args {
+    flex: 1 1 auto;
+    min-width: 260px;
+  }
+
+  .actions-box .btn {
+    --bs-btn-padding-y: .28rem;
+    --bs-btn-padding-x: .55rem;
+  }
+
+  .service-action-presets {
+    border: 1px solid rgba(227,6,19,.22);
+    border-left: 5px solid var(--mmbb-ui-accent);
+    border-radius: var(--mmbb-radius-lg);
+    padding: .55rem .65rem;
+    background:
+      linear-gradient(90deg, rgba(227,6,19,.11), rgba(227,6,19,.045) 44%, rgba(248,249,250,.72) 100%);
+  }
+
+  .service-action-presets .preset-title {
+    font-weight: 700;
+    color: #084298;
+    font-size: .82rem;
+  }
+
+  .service-action-presets .btn {
+    white-space: nowrap;
+  }
+
+  .service-control-panel {
+    border: 1px solid rgba(227,6,19,.22);
+    border-left: 5px solid var(--mmbb-ui-accent);
+    border-radius: var(--mmbb-radius-lg);
+    padding: .65rem .75rem;
+    background:
+      linear-gradient(90deg, rgba(227,6,19,.11), rgba(227,6,19,.045) 44%, rgba(248,249,250,.72) 100%);
+  }
+
+  .service-control-panel .service-title {
+    font-weight: 700;
+    color: #084298;
+  }
+
+  .service-control-panel .service-name {
+    color: var(--bs-secondary-color);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    word-break: break-all;
+  }
+
+  .service-control-panel .btn {
+    --bs-btn-padding-y: .28rem;
+    --bs-btn-padding-x: .6rem;
+  }
+
+  .service-state-chip {
+    min-width: 96px;
+    justify-content: center;
+  }
+
+  .service-state-running {
+    background: rgba(25,135,84,.14);
+    color: var(--bs-success-text-emphasis);
+  }
+
+  .service-state-stopped {
+    background: rgba(255,193,7,.18);
+    color: var(--bs-warning-text-emphasis);
+  }
+
+  .service-state-error {
+    background: rgba(220,53,69,.14);
+    color: var(--bs-danger-text-emphasis);
+  }
+
+  .service-state-unknown {
+    background: rgba(108,117,125,.14);
+    color: var(--bs-secondary-color);
+  }
+
+  .sticky-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bs-body-bg);
+    padding: .75rem .9rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: var(--mmbb-radius-lg);
+  }
+
+  .form-text.example {
+    font-size: .84rem;
+    color: var(--bs-secondary-color);
+    background: var(--bs-tertiary-bg);
+    border-left: 3px solid var(--bs-border-color);
+    padding: .55rem .75rem;
+    border-radius: var(--mmbb-radius-lg);
+    margin-top: .45rem;
+  }
+
+  .readonly-banner {
+    border: 1px solid rgba(255,193,7,.35);
+    background: rgba(255,193,7,.12);
+    color: var(--bs-body-color);
+    border-radius: var(--mmbb-radius-lg);
+    padding: .8rem 1rem;
+  }
+
+  .editor-meta {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .acc-head .form-control {
+    background: var(--bs-body-bg);
+  }
+
+  [data-bs-theme="dark"] {
+    --chip-service-bg: rgba(25,135,84,.22);
+    --chip-uncat-bg: rgba(173,181,189,.12);
+    --chip-other-bg: rgba(13,202,240,.18);
+    --chip-systemd-bg: rgba(227,6,19,.22);
+    --chip-script-bg: rgba(255,193,7,.22);
+    --chip-none-bg: rgba(173,181,189,.12);
+  }
+
+  @media (max-width: 576px) {
+    .actions-row {
+      flex-wrap: wrap;
+      white-space: normal;
+    }
+
+    .actions-row input.token {
+      flex: 1 1 180px;
+    }
+
+    .actions-row input.args {
+      flex: 1 1 240px;
+    }
+
+    .acc-sub {
+      max-width: 100%;
+    }
+  }

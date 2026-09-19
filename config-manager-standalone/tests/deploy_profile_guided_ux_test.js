@@ -1,0 +1,22 @@
+'use strict';
+const fs = require('fs');
+const path = require('path');
+const root = path.join(__dirname, '..');
+const page = fs.readFileSync(path.join(root, 'public', 'git_config_editor.php'), 'utf8');
+const js = fs.readFileSync(path.join(root, 'public', 'assets', 'js', 'git_config_editor.js'), 'utf8');
+function assert(v, m) { if (!v) throw new Error(m); }
+assert(page.includes('id="gceMoreActions"'), 'Menü „Weitere Aktionen“ fehlt.');
+assert(page.includes('> Neues Profil'), 'Primäraktion „Neues Profil“ fehlt.');
+assert(page.includes('> Validieren'), 'Primäraktion „Validieren“ fehlt.');
+assert(page.includes('> Speichern'), 'Primäraktion „Speichern“ fehlt.');
+assert(page.includes('Zentral</strong> · gilt für alle Zielserver'), 'Zentraler, serverunabhängiger Profilkatalog ist nicht klar ausgewiesen.');
+assert(!page.includes('<label for="gceServer" class="form-label">Zielserver</label>'), 'Deploy-Profile sind weiterhin sichtbar an einen Zielserver gekoppelt.');
+assert(page.includes('Agenten für Repository-Assistent aktualisieren'), 'Technische Agentenfunktion für den Repository-Assistenten fehlt.');
+assert(page.includes('Profil aus Repository erstellen'), 'Repository-Assistent ist nicht verständlich beschriftet.');
+assert(page.includes('id="gceProfileActiveState"'), 'Expliziter Aktiv/Inaktiv-Status fehlt.');
+assert(js.includes('?api=profiles_get'), 'Editor lädt nicht aus dem zentralen Profilkatalog.');
+assert(js.includes("action: 'profiles_save'"), 'Editor speichert nicht in den zentralen Profilkatalog.');
+assert(js.includes("action: 'profiles_validate'"), 'Zentrale Profilvalidierung fehlt.');
+assert(js.includes("'Ungespeichert'"), 'Status „Ungespeichert“ fehlt.');
+assert(js.includes("'Gespeichert'"), 'Status „Gespeichert“ fehlt.');
+console.log('deploy_profile_guided_ux_test: OK');

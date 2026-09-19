@@ -1,0 +1,4 @@
+standalone/data/config-manager.env
+standalone/data/users.json
+standalone/data/audit_log.sqlite
+standalone/data/audit_log.sqlite-*

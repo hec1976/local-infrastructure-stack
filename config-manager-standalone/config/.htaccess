@@ -1,0 +1,4 @@
+Require all denied
+<FilesMatch ".*">
+    Require all denied
+</FilesMatch>

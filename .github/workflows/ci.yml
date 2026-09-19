@@ -1,0 +1,41 @@
+name: Repository checks
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install test dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes --no-install-recommends \
+            jq libmojolicious-perl nodejs perl php-cli php-curl php-mbstring \
+            php-sqlite3 rsync
+
+      - name: Repository hygiene and syntax
+        run: ./tools/repo-check.sh
+
+      - name: Regression tests
+        run: ./tools/run-all-tests.sh
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: reports/TEST_RESULTS.json
+          if-no-files-found: warn
+          retention-days: 14

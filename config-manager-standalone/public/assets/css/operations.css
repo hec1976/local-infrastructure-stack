@@ -1,0 +1,19 @@
+.operations-page .ops-command-card .card-body { min-height: 74px; }
+.ops-module-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:.85rem; }
+.ops-module-card { color:inherit; border:1px solid var(--bs-border-color); transition:transform .12s ease,border-color .12s ease,box-shadow .12s ease; }
+.ops-module-card:hover { transform:translateY(-1px); border-color:#8fa8c7; box-shadow:0 .35rem .9rem rgba(26,47,74,.10)!important; }
+.ops-module-icon { display:inline-grid; place-items:center; width:2.15rem; height:2.15rem; border:1px solid #cbd6e3; border-radius:.55rem; background:#f5f8fb; color:#334f70; font-size:1.05rem; }
+.ops-module-name { font-weight:700; margin-top:.75rem; color:#26384d; }
+.ops-module-value { margin-top:.2rem; color:#5b6b7e; font-size:.88rem; min-height:2.5em; }
+.ops-dependency-list .list-group-item { padding:.8rem 1rem; }
+.ops-dep-dot { flex:0 0 auto; width:.72rem; height:.72rem; border-radius:50%; margin-top:.35rem; border:1px solid rgba(0,0,0,.12); background:#adb5bd; }
+.ops-dep-ok { background:#198754; }
+.ops-dep-warning { background:#ffc107; }
+.ops-dep-error { background:#dc3545; }
+.ops-dep-neutral,.ops-dep-unknown { background:#adb5bd; }
+.ops-drift-table th,.ops-drift-table td { padding:.65rem .8rem; vertical-align:middle; }
+.ops-kpi-row { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
+.ops-kpi-row>div { border:1px solid #d6dee8; border-radius:.55rem; padding:.7rem .75rem; background:#f8fafc; }
+.ops-kpi-row span { display:block; color:#68788b; font-size:.76rem; font-weight:600; text-transform:uppercase; letter-spacing:.025em; }
+.ops-kpi-row strong { display:block; margin-top:.15rem; font-size:1.2rem; color:#26384d; }
+@media(max-width:767.98px){ .ops-kpi-row{grid-template-columns:1fr;} }

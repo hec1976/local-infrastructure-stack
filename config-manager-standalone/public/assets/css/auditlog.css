@@ -1,0 +1,154 @@
+/* Config Manager Portal 3.10.9 - Audit Log */
+.audit-log-page {
+    max-width: 1480px;
+}
+
+.audit-log-page .card {
+    overflow: hidden;
+}
+
+.audit-log-summary-grid > div {
+    /* Geometry comes from the portal-wide stat-tile language. */
+    min-width: 0;
+}
+
+.mmbb-audit-filter-card .card-body {
+    padding: 1rem;
+}
+
+.audit-log-page .mmbb-audit-filter-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(120px, 1fr));
+    gap: .75rem;
+    align-items: end;
+}
+
+.audit-log-page .mmbb-audit-filter-field {
+    min-width: 0;
+}
+
+.audit-log-page .mmbb-audit-filter-field .form-label {
+    margin-bottom: .28rem;
+}
+
+.audit-log-page .mmbb-audit-filter-actions {
+    display: flex;
+    align-items: center;
+}
+
+.audit-log-page .mmbb-audit-filter-actions .btn {
+    white-space: nowrap;
+}
+
+.audit-log-table-card .table-responsive {
+    min-height: 130px;
+}
+
+.audit-log-table-card .table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.audit-log-table-card .table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.audit-log-table-card .table td {
+    border-color: var(--bs-border-color);
+}
+
+.audit-log-table-card .badge {
+    font-weight: 650;
+}
+
+.audit-log-table-card .identity-cell,
+.audit-log-table-card .uri-cell {
+    max-width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.audit-log-table-card .mmbb-audit-detail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+    white-space: nowrap;
+}
+
+.audit-log-table-card .dataTables_wrapper {
+    padding: 1rem;
+}
+
+.audit-log-table-card .dataTables_wrapper .dataTables_scroll,
+.audit-log-table-card .dataTables_wrapper .table-responsive {
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.audit-log-table-card .dataTables_length,
+.audit-log-table-card .dataTables_filter {
+    margin-bottom: .75rem;
+}
+
+.audit-log-table-card .dataTables_info,
+.audit-log-table-card .dataTables_paginate {
+    margin-top: .75rem;
+}
+
+.audit-log-detail-modal .modal-content {
+    overflow: hidden;
+}
+
+.audit-log-detail-modal .modal-header {
+}
+
+.audit-log-detail-modal .audit-modal-pre {
+    max-height: 65vh;
+    margin: 0;
+    overflow: auto;
+    border: 1px solid var(--bs-border-color);
+    background: var(--bs-tertiary-bg);
+    font-size: .82rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 1199.98px) {
+    .audit-log-page .mmbb-audit-filter-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .audit-log-page .mmbb-audit-filter-actions {
+        grid-column: span 3;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .audit-log-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 575.98px) {
+    .audit-log-summary-grid,
+    .audit-log-page .mmbb-audit-filter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .audit-log-page .mmbb-audit-filter-actions {
+        grid-column: auto;
+    }
+
+    .audit-log-page .mmbb-audit-filter-actions .btn {
+        width: 100%;
+    }
+}
+
+.audit-log-summary-grid > div { padding: .65rem .75rem; border: 1px solid var(--mmbb-border); border-radius: var(--mmbb-radius-lg); background: var(--mmbb-subtle-bg); }
+.audit-log-summary-grid > div > span, .audit-log-summary-grid > div > strong { display:block; }
+.audit-log-summary-grid > div > span { margin-bottom:.15rem; color:var(--mmbb-text-muted); font-size:.78rem; }
+.audit-log-summary-grid > div > strong { overflow-wrap:anywhere; font-size:.88rem; }

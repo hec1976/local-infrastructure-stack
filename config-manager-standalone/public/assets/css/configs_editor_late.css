@@ -1,0 +1,268 @@
+/*
+ * Config Manager Portal 3.10.5
+ * Seitenspezifische Komponenten fuer managed_configs.json.
+ * WICHTIG: Keine Workspace-, Toolbar-, Master-/Detail-Geometrie hier.
+ * Diese liegt ausschliesslich in configuration_workspace.css.
+ */
+
+.cfg-editor-page {
+  --cfg-accent: var(--cm-config-accent, var(--mmbb-ui-accent, #b00020));
+  --cfg-accent-soft: var(--cm-config-accent-soft, color-mix(in srgb, var(--cfg-accent) 8%, var(--bs-body-bg)));
+  --cfg-border: color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+}
+
+/* Detailformular: nur inhaltliche, seitenspezifische Felder. */
+.cfg-editor-page #cards .cfg-detail-form-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, .75fr) minmax(260px, 1fr);
+  gap: .8rem 1rem;
+}
+
+.cfg-editor-page #cards .cfg-field-wide { grid-column: 1 / -1; }
+
+.cfg-editor-page #cards .form-label {
+  margin-bottom: .25rem;
+  color: var(--bs-emphasis-color);
+  font-size: .68rem;
+  font-weight: 700;
+}
+
+.cfg-editor-page #cards .form-text {
+  margin-top: .2rem;
+  color: var(--bs-secondary-color);
+  font-size: .59rem;
+  line-height: 1.4;
+}
+
+.cfg-editor-page #cards .chip {
+  min-height: 24px;
+  padding: .22rem .48rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 999px;
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.cfg-editor-page #cards .cfg-kind-chip.badge-svc-systemd,
+.cfg-editor-page #cards .cfg-action-count-chip {
+  border-color: color-mix(in srgb, var(--bs-secondary-color) 20%, var(--cfg-border));
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 72%, var(--bs-body-bg));
+  color: var(--bs-secondary-color);
+}
+
+/* Rechte */
+.cfg-editor-page #cards .cfg-rights-intro {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .65rem .75rem;
+  margin-bottom: .8rem;
+  border: 1px solid var(--cfg-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 36%, var(--bs-body-bg));
+  color: var(--bs-secondary-color);
+  font-size: .68rem;
+}
+
+.cfg-editor-page #cards .cfg-rights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+}
+
+.cfg-editor-page #cards .cfg-mode-preview {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin-top: .8rem;
+  padding: .65rem .7rem;
+  border: 1px solid var(--cfg-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 36%, var(--bs-body-bg));
+}
+
+.cfg-editor-page #cards .cfg-mode-preview strong {
+  min-width: 58px;
+  padding: .28rem .48rem;
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-tertiary-bg);
+  text-align: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.cfg-editor-page #cards .cfg-mode-preview span {
+  color: var(--bs-secondary-color);
+  font-size: .66rem;
+}
+
+/* Systemdienst-Steuerung */
+.cfg-editor-page #cards .service-control-panel {
+  padding: .65rem;
+  border: 1px solid var(--cfg-border);
+  border-left: 3px solid var(--cfg-accent);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 38%, var(--bs-body-bg));
+}
+
+.cfg-editor-page #cards .service-control-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+
+.cfg-editor-page #cards .service-control-head > div {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: .45rem;
+  min-width: 0;
+}
+
+.cfg-editor-page #cards .service-title {
+  color: var(--bs-emphasis-color);
+  font-size: .72rem;
+  font-weight: 700;
+}
+
+.cfg-editor-page #cards .service-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--bs-secondary-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .64rem;
+}
+
+.cfg-editor-page #cards .service-control-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.cfg-editor-page #cards .service-control-buttons .btn { min-height: var(--mmbb-control-height-sm); }
+
+.cfg-editor-page #cards .service-control-hint {
+  margin-top: .42rem;
+  color: var(--bs-secondary-color);
+  font-size: .62rem;
+}
+
+/* Actions: kompakte Tabellenzeilen, funktionell anders als Deploy-Profile. */
+.cfg-editor-page #cards .cfg-actions-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .7rem;
+}
+
+.cfg-editor-page #cards .cfg-actions-toolbar > div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
+.cfg-editor-page #cards .cfg-actions-toolbar strong { font-size: .74rem; }
+.cfg-editor-page #cards .cfg-actions-toolbar small {
+  color: var(--bs-secondary-color);
+  font-size: .62rem;
+}
+
+.cfg-editor-page #cards .actions-table-head {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr) 96px;
+  gap: .55rem;
+  padding: 0 .55rem .32rem;
+  color: var(--bs-secondary-color);
+  font-size: .6rem;
+  font-weight: 750;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.cfg-editor-page #cards .actions-list {
+  width: 100%;
+  overflow: visible;
+  padding: 0;
+}
+
+.cfg-editor-page #cards .actions-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr) auto;
+  gap: .55rem;
+  align-items: end;
+  width: 100%;
+  margin: 0 0 .42rem;
+  padding: .52rem;
+  border: 1px solid var(--cfg-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  white-space: normal;
+}
+
+.cfg-editor-page #cards .action-field { min-width: 0; }
+.cfg-editor-page #cards .action-field-label { display: none; }
+
+.cfg-editor-page #cards .actions-row input.token,
+.cfg-editor-page #cards .actions-row input.args {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.cfg-editor-page #cards .action-row-tools {
+  display: flex;
+  justify-content: flex-end;
+  gap: .25rem;
+}
+
+.cfg-editor-page #cards .action-row-tools .btn {
+  width: 31px;
+  min-width: 31px;
+  height: 31px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cfg-editor-page #cards .cfg-actions-empty {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .9rem;
+  border: 1px dashed var(--bs-border-color);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 24%, var(--bs-body-bg));
+  color: var(--bs-secondary-color);
+}
+
+.cfg-editor-page #cards .cfg-actions-empty > i { font-size: 1.25rem; }
+.cfg-editor-page #cards .cfg-actions-empty div { display: flex; flex-direction: column; }
+.cfg-editor-page #cards .cfg-actions-empty strong { color: var(--bs-emphasis-color); font-size: .72rem; }
+.cfg-editor-page #cards .cfg-actions-empty span { font-size: .62rem; }
+
+@media (max-width: 860px) {
+  .cfg-editor-page #cards .cfg-detail-form-grid,
+  .cfg-editor-page #cards .cfg-rights-grid { grid-template-columns: 1fr; }
+  .cfg-editor-page #cards .cfg-field-wide { grid-column: auto; }
+  .cfg-editor-page #cards .actions-table-head { display: none !important; }
+  .cfg-editor-page #cards .actions-row { grid-template-columns: 1fr; }
+  .cfg-editor-page #cards .action-field-label {
+    display: block;
+    margin-bottom: .25rem;
+    color: var(--bs-secondary-color);
+    font-size: .64rem;
+    font-weight: 650;
+  }
+  .cfg-editor-page #cards .action-row-tools { justify-content: flex-start; }
+}
+
+@media (max-width: 620px) {
+  .cfg-editor-page #cards .service-control-head,
+  .cfg-editor-page #cards .cfg-actions-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

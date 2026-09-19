@@ -1,0 +1,418 @@
+.git-deploy-page {
+    max-width: 1600px;
+}
+
+.git-deploy-server-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+    flex-wrap: wrap;
+}
+
+.git-deploy-server-search {
+    width: min(440px, 100%);
+}
+
+.git-deploy-server-table {
+    overflow: hidden;
+    background: var(--bs-body-bg);
+}
+
+.git-deploy-server-viewport {
+    max-height: 360px;
+    overflow: auto;
+}
+
+.git-deploy-server-row {
+    display: grid;
+    grid-template-columns: 34px minmax(210px, 1.7fr) minmax(82px, .55fr) minmax(72px, .45fr) minmax(105px, .68fr) minmax(62px, .38fr) minmax(92px, .55fr);
+    align-items: center;
+    min-width: 920px;
+    min-height: 48px;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.git-deploy-server-row > span {
+    min-width: 0;
+    padding: .48rem .55rem;
+    font-size: .78rem;
+}
+
+.git-deploy-server-columns {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    min-height: 34px;
+    color: var(--bs-secondary-color);
+    background: var(--bs-tertiary-bg);
+    font-weight: 700;
+}
+
+.git-deploy-server-columns > span {
+    padding-top: .38rem;
+    padding-bottom: .38rem;
+    font-size: .68rem;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+}
+
+.git-deploy-server-list .git-deploy-server:last-child {
+    border-bottom: 0;
+}
+
+.git-deploy-server {
+    background: var(--bs-body-bg);
+    transition: background-color .12s ease, box-shadow .12s ease;
+}
+
+.git-deploy-server:hover {
+    background: color-mix(in srgb, var(--bs-primary) 4%, var(--bs-body-bg));
+}
+
+.git-deploy-server.is-selected {
+    background: color-mix(in srgb, var(--bs-primary) 9%, var(--bs-body-bg));
+    box-shadow: inset 3px 0 0 var(--bs-primary);
+}
+
+.git-deploy-server.is-offline {
+    opacity: .8;
+}
+
+.git-deploy-server-check {
+    display: flex;
+    justify-content: center;
+}
+
+.git-deploy-server-identity {
+    display: flex;
+    flex-direction: column;
+    gap: .08rem;
+}
+
+.git-deploy-server-identity label {
+    cursor: pointer;
+}
+
+.git-deploy-server-identity small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.git-deploy-server-empty {
+    padding: 1rem;
+    color: var(--bs-secondary-color);
+    text-align: center;
+    border-top: 1px solid var(--bs-border-color);
+    font-size: .82rem;
+}
+
+.git-deploy-server-url,
+.git-deploy-profile-value,
+.git-deploy-result-detail {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.git-deploy-profile-table {
+    font-size: .875rem;
+}
+
+.git-deploy-profile-table th {
+    white-space: nowrap;
+}
+
+.git-deploy-results-table th {
+    white-space: nowrap;
+}
+
+.git-deploy-result-detail summary {
+    cursor: pointer;
+    color: var(--bs-link-color);
+}
+
+.git-deploy-result-detail pre {
+    max-width: 680px;
+    max-height: 320px;
+    overflow: auto;
+    padding: .6rem;
+    margin: .45rem 0 0;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .35rem;
+    background: var(--bs-tertiary-bg);
+    white-space: pre-wrap;
+}
+
+.git-deploy-example {
+    max-height: 620px;
+    overflow: auto;
+    padding: .85rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .4rem;
+    background: var(--bs-tertiary-bg);
+    font-size: .82rem;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+.git-deploy-commit {
+    display: inline-block;
+    min-width: 10ch;
+    white-space: nowrap;
+    vertical-align: bottom;
+    font-size: .86rem;
+    line-height: 1.25;
+}
+
+@media (max-width: 991.98px) {
+    .git-deploy-results-table {
+        min-width: 1420px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .git-deploy-server-search,
+    .git-deploy-server-toolbar > .d-flex {
+        width: 100%;
+    }
+
+    .git-deploy-server-toolbar > .d-flex .btn {
+        flex: 1 1 auto;
+    }
+}
+
+.git-deploy-config-editor {
+    min-height: 560px;
+    resize: vertical;
+    tab-size: 2;
+    line-height: 1.4;
+    white-space: pre;
+}
+
+#gitDeployConfigSummary {
+    overflow-wrap: anywhere;
+}
+
+/* Guided Git Deploy workflow */
+.git-deploy-mode-tabs {
+    display: flex;
+    gap: .35rem;
+    padding: .3rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .65rem;
+    background: var(--bs-tertiary-bg);
+}
+
+.git-deploy-mode-tab {
+    appearance: none;
+    border: 0;
+    border-radius: .48rem;
+    padding: .62rem .9rem;
+    background: transparent;
+    color: var(--bs-secondary-color);
+    font-weight: 700;
+    font-size: .86rem;
+}
+
+.git-deploy-mode-tab:hover {
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.git-deploy-mode-tab.is-active {
+    background: var(--bs-body-bg);
+    color: var(--bs-primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+
+.git-deploy-workflow {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .55rem;
+}
+
+.git-deploy-step {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 64px;
+    padding: .65rem .75rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .55rem;
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-secondary-color);
+}
+
+.git-deploy-step strong,
+.git-deploy-step small {
+    display: block;
+}
+
+.git-deploy-step strong {
+    color: var(--bs-body-color);
+    font-size: .82rem;
+}
+
+.git-deploy-step small {
+    margin-top: .12rem;
+    font-size: .7rem;
+}
+
+.git-deploy-step-no {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    border-radius: 50%;
+    background: var(--bs-secondary-bg);
+    color: var(--bs-secondary-color);
+    font-weight: 800;
+    font-size: .76rem;
+}
+
+.git-deploy-step.is-active {
+    border-color: color-mix(in srgb, var(--bs-primary) 55%, var(--bs-border-color));
+    background: color-mix(in srgb, var(--bs-primary) 7%, var(--bs-body-bg));
+}
+
+.git-deploy-step.is-active .git-deploy-step-no {
+    background: var(--bs-primary);
+    color: #fff;
+}
+
+.git-deploy-step.is-done .git-deploy-step-no {
+    background: var(--bs-success);
+    color: #fff;
+}
+
+.git-deploy-step.is-done .git-deploy-step-no::before {
+    content: "✓";
+}
+
+.git-deploy-step.is-done .git-deploy-step-no {
+    font-size: 0;
+}
+
+.git-deploy-step.is-done .git-deploy-step-no::before {
+    font-size: .78rem;
+}
+
+.git-deploy-next-action {
+    display: flex;
+    align-items: center;
+    padding: .7rem .85rem;
+    border: 1px solid color-mix(in srgb, var(--bs-primary) 30%, var(--bs-border-color));
+    border-radius: .5rem;
+    background: color-mix(in srgb, var(--bs-primary) 5%, var(--bs-body-bg));
+    color: var(--bs-body-color);
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+.git-deploy-next-action.is-warning {
+    border-color: color-mix(in srgb, var(--bs-warning) 55%, var(--bs-border-color));
+    background: color-mix(in srgb, var(--bs-warning) 10%, var(--bs-body-bg));
+}
+
+.git-deploy-next-action.is-success {
+    border-color: color-mix(in srgb, var(--bs-success) 45%, var(--bs-border-color));
+    background: color-mix(in srgb, var(--bs-success) 8%, var(--bs-body-bg));
+}
+
+.git-deploy-next-action.is-info {
+    border-color: color-mix(in srgb, var(--bs-info) 45%, var(--bs-border-color));
+    background: color-mix(in srgb, var(--bs-info) 8%, var(--bs-body-bg));
+}
+
+.git-deploy-activation {
+    padding: .85rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .55rem;
+    background: var(--bs-tertiary-bg);
+}
+
+.git-deploy-profile-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: .7rem;
+}
+
+.git-deploy-profile-card {
+    padding: .8rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: .55rem;
+    background: var(--bs-body-bg);
+}
+
+.git-deploy-profile-card-head {
+    display: flex;
+    justify-content: space-between;
+    gap: .75rem;
+    align-items: center;
+    padding-bottom: .55rem;
+    margin-bottom: .55rem;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.git-deploy-profile-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .5rem .9rem;
+}
+
+.git-deploy-profile-summary > div {
+    min-width: 0;
+}
+
+.git-deploy-profile-summary dt {
+    margin: 0 0 .15rem;
+    color: var(--bs-secondary-color);
+    font-size: .66rem;
+    text-transform: uppercase;
+    letter-spacing: .035em;
+}
+
+.git-deploy-profile-summary dd {
+    margin: 0;
+    font-size: .8rem;
+    overflow-wrap: anywhere;
+}
+
+.git-deploy-profile-summary dd small {
+    display: block;
+    color: var(--bs-secondary-color);
+}
+
+.git-deploy-profile-tech summary {
+    cursor: pointer;
+    color: var(--bs-link-color);
+    font-size: .76rem;
+    font-weight: 600;
+}
+
+/* Reduced server-selection noise: technical agent/token data is secondary text. */
+.git-deploy-server-row {
+    grid-template-columns: 34px minmax(290px, 2.2fr) minmax(90px, .6fr) minmax(110px, .72fr) minmax(70px, .45fr);
+    min-width: 720px;
+}
+
+@media (max-width: 991.98px) {
+    .git-deploy-workflow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 575.98px) {
+    .git-deploy-mode-tabs {
+        flex-direction: column;
+    }
+    .git-deploy-mode-tab {
+        text-align: left;
+    }
+    .git-deploy-workflow,
+    .git-deploy-profile-summary {
+        grid-template-columns: 1fr;
+    }
+}

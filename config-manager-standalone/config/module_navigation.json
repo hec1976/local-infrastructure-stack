@@ -1,0 +1,235 @@
+{
+  "schema": "mmbb.module_navigation.v1",
+  "enabled": true,
+  "module_key": "config-manager",
+  "label": "Config Manager",
+  "config_files": [
+    {
+      "key": "CONFIG_MANAGER",
+      "label": "CONFIG_MANAGER Config",
+      "path": "config/config.php",
+      "enabled": true,
+      "note": "aus DB app_config_files abgeleitet"
+    }
+  ],
+  "items": [
+    {
+      "key": "overview",
+      "label": "Services & Configs",
+      "href": "index",
+      "icon": "bi bi-hdd-network",
+      "enabled": true,
+      "order": 10,
+      "group": "Config-Manager"
+    },
+    {
+      "key": "configs_editor",
+      "label": "Managed Configs",
+      "href": "configs_editor",
+      "icon": "bi bi-sliders",
+      "enabled": true,
+      "order": 20,
+      "group": "Config-Manager"
+    },
+    {
+      "key": "configdiff",
+      "label": "Config Vergleich",
+      "href": "configdiff",
+      "icon": "bi bi-file-diff",
+      "enabled": true,
+      "order": 30,
+      "group": "Config-Manager"
+    },
+    {
+      "key": "git_config_editor",
+      "label": "Deploy-Profile",
+      "href": "git_config_editor",
+      "icon": "bi bi-boxes",
+      "enabled": true,
+      "order": 40,
+      "group": "Deployment"
+    },
+    {
+      "key": "git_deploy_overview",
+      "label": "Deploy Übersicht",
+      "href": "git_deploy_overview",
+      "icon": "bi bi-card-checklist",
+      "enabled": true,
+      "order": 41,
+      "group": "Deployment"
+    },
+    {
+      "key": "git_deploy",
+      "label": "Git Deploy",
+      "href": "git_deploy",
+      "icon": "bi bi-git",
+      "enabled": true,
+      "order": 42,
+      "group": "Deployment"
+    },
+    {
+      "key": "git_repository",
+      "label": "Git Repository Browser",
+      "href": "git_repository",
+      "icon": "bi bi-folder2-open",
+      "enabled": true,
+      "order": 43,
+      "group": "Deployment"
+    },
+    {
+      "key": "git_upload",
+      "label": "Git Repository Upload",
+      "href": "git_upload",
+      "icon": "bi bi-cloud-arrow-up",
+      "enabled": true,
+      "order": 44,
+      "group": "Deployment"
+    },
+    {
+      "key": "desired_state",
+      "label": "Desired State",
+      "href": "desired_state",
+      "icon": "bi bi-diagram-3",
+      "enabled": true,
+      "order": 45,
+      "group": "Deployment"
+    },
+    {
+      "key": "agent_enrollment",
+      "label": "Enrollment",
+      "href": "agent_enrollment",
+      "icon": "bi bi-pc-display-horizontal",
+      "enabled": false,
+      "order": 11,
+      "group": "Server Management"
+    },
+    {
+      "key": "package_management",
+      "label": "Package Management",
+      "href": "package_management",
+      "icon": "bi bi-box-seam",
+      "enabled": true,
+      "order": 20,
+      "group": "Server Management"
+    },
+    {
+      "key": "auditlog",
+      "label": "Audit-Log",
+      "href": "auditlog",
+      "icon": "bi bi-file-earmark-text",
+      "enabled": true,
+      "order": 60,
+      "group": "Logs"
+    },
+    {
+      "key": "modsecurity",
+      "label": "ModSecurity / OWASP CRS",
+      "href": "modsecurity",
+      "icon": "bi bi-shield-lock",
+      "enabled": true,
+      "order": 46,
+      "group": "Security"
+    },
+    {
+      "key": "fail2ban",
+      "label": "Fail2ban",
+      "href": "fail2ban",
+      "icon": "bi bi-shield-shaded",
+      "enabled": true,
+      "order": 48,
+      "group": "Security"
+    },
+    {
+      "key": "desired_state_editor",
+      "label": "Desired State Baselines",
+      "href": "desired_state_editor",
+      "icon": "bi bi-ui-checks-grid",
+      "enabled": false,
+      "order": 44,
+      "group": "Deployment"
+    },
+    {
+      "key": "monit_status",
+      "label": "Server Health",
+      "href": "monit_status",
+      "icon": "bi bi-activity",
+      "enabled": true,
+      "order": 10,
+      "group": "Monitoring"
+    },
+    {
+      "key": "server_management",
+      "label": "Registry",
+      "href": "server_management",
+      "icon": "bi bi-server",
+      "enabled": false,
+      "order": 13,
+      "group": "Server Management"
+    },
+    {
+      "key": "password_change",
+      "label": "Passwort ändern",
+      "href": "password_change",
+      "icon": "bi bi-key",
+      "enabled": true,
+      "order": 81,
+      "group": "Administration"
+    },
+    {
+      "key": "operations",
+      "label": "Betriebsübersicht",
+      "href": "operations",
+      "icon": "bi bi-speedometer2",
+      "enabled": true,
+      "order": 5,
+      "group": "Config-Manager"
+    },
+    {
+      "key": "firewall",
+      "label": "Firewall",
+      "href": "firewall",
+      "icon": "bi bi-bricks",
+      "enabled": true,
+      "order": 47,
+      "group": "Security"
+    },
+    {
+      "key": "file_manager",
+      "label": "Datei Manager",
+      "href": "file_manager",
+      "icon": "bi bi-file-earmark-code",
+      "enabled": true,
+      "order": 35,
+      "group": "Config-Manager"
+    },
+    {
+      "key": "client_baseline",
+      "label": "Baseline",
+      "href": "client_baseline",
+      "icon": "bi bi-layers",
+      "enabled": false,
+      "order": 12,
+      "group": "Server Management"
+    },
+    {
+      "key": "managed_hosts",
+      "label": "Managed Hosts",
+      "href": "managed_hosts",
+      "icon": "bi bi-hdd-rack",
+      "enabled": true,
+      "order": 10,
+      "group": "Server Management"
+    },
+    {
+      "key": "access_overview",
+      "label": "Zugänge & Secrets",
+      "href": "access_overview",
+      "icon": "bi bi-key-fill",
+      "enabled": true,
+      "order": 80,
+      "group": "Administration"
+    }
+  ],
+  "required_service": "ConfigManager",
+  "generated_from": "app_config_files"
+}

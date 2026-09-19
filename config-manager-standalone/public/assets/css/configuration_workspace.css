@@ -1,0 +1,2357 @@
+/*
+ * Config Manager Portal 3.10.4
+ * Gemeinsame Seitengeometrie und Detail-Komponenten der Konfigurationseditoren.
+ */
+
+/* Gemeinsame visuelle Sprache fuer Managed Configs und Git-Konfiguration.
+ * Rot ist nur Akzentfarbe; keine vollflaechigen roten Banner. */
+.configuration-editor-page {
+  --cm-config-accent: var(--mmbb-ui-accent, #b00020);
+  --cm-config-accent-soft: color-mix(in srgb, var(--cm-config-accent) 8%, var(--bs-body-bg));
+  --cm-config-accent-border: color-mix(in srgb, var(--cm-config-accent) 38%, var(--bs-border-color));
+}
+
+/* Eine einzige Haupt-Tab-Komponente fuer Managed Configs und Deploy-Profile.
+ * Diese Regeln ersetzen die unterschiedlichen Bootstrap-/Seitenspezifischen Varianten. */
+.configuration-editor-page .mmbb-content-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: .2rem;
+  margin: 0;
+  padding: 0 .05rem;
+  min-height: 43px;
+  border-bottom: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-item {
+  margin: 0;
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  min-height: 42px;
+  margin: 0;
+  padding: .65rem .78rem .6rem;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
+  color: var(--bs-secondary-color);
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.1;
+  box-shadow: none !important;
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-link::after {
+  content: "";
+  position: absolute;
+  left: .65rem;
+  right: .65rem;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: transparent;
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-link:hover,
+.configuration-editor-page .mmbb-content-tabs .nav-link:focus-visible {
+  color: var(--bs-emphasis-color);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 58%, transparent);
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-link.active {
+  color: var(--cm-config-accent);
+  background: transparent;
+  font-weight: 700;
+}
+
+.configuration-editor-page .mmbb-content-tabs .nav-link.active::after {
+  background: var(--cm-config-accent);
+}
+
+.configuration-editor-page .mmbb-content-tabs .badge {
+  min-width: 1.55rem;
+  padding: .2rem .4rem;
+  font-size: .66rem;
+  font-weight: 650;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Eine einzige Detail-Tab-Komponente für Managed Configs und Deploy-Profile. */
+.configuration-editor-page .configuration-detail-tabs {
+  display: flex;
+  gap: .15rem;
+  padding: .42rem .65rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  background: var(--bs-body-bg);
+}
+
+.configuration-editor-page .configuration-detail-tabs .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .38rem;
+  padding: .48rem .65rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: .45rem .45rem 0 0;
+  color: var(--bs-secondary-color);
+  font-size: .72rem;
+  font-weight: 650;
+}
+
+.configuration-editor-page .configuration-detail-tabs .nav-link:hover {
+  color: var(--bs-emphasis-color);
+  background: var(--bs-tertiary-bg);
+}
+
+.configuration-editor-page .configuration-detail-tabs .nav-link.active {
+  color: var(--bs-emphasis-color);
+  border-bottom-color: var(--cm-config-accent);
+  background: transparent;
+}
+
+.configuration-editor-page .configuration-detail-content {
+  min-height: 470px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 25%, var(--bs-body-bg));
+}
+
+@media (max-width: 639.98px) {
+  .configuration-editor-page .configuration-detail-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .configuration-editor-page .configuration-detail-tabs .nav-link {
+    white-space: nowrap;
+  }
+}
+
+.git-config-editor-page {
+  --gce-border: color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  --gce-soft: color-mix(in srgb, var(--bs-body-bg) 94%, var(--bs-tertiary-bg));
+  --gce-accent: var(--cm-config-accent);
+  --gce-active: var(--cm-config-accent-soft);
+  --gce-active-border: var(--cm-config-accent-border);
+}
+
+.git-config-editor-page .gce-workspace {
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+}
+
+.git-config-editor-page .gce-commandbar {
+  position: sticky;
+  top: 4.25rem;
+  z-index: 8;
+  padding: .8rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-body-bg) 96%, var(--bs-tertiary-bg));
+  box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .025);
+}
+
+.git-config-editor-page .gce-commandbar-main {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.git-config-editor-page .gce-command-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: .65rem;
+  row-gap: .55rem;
+}
+
+.git-config-editor-page .gce-command-actions .btn,
+.git-config-editor-page .gce-detail-meta .btn,
+.git-config-editor-page .gce-backup-controls .btn {
+  min-height: var(--mmbb-control-height-sm);
+  margin: 0;
+}
+
+.git-config-editor-page .gce-server-field {
+  width: min(310px, 100%);
+}
+
+.git-config-editor-page .gce-server-field .form-label {
+  margin-bottom: .25rem;
+  color: var(--bs-secondary-color);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.git-config-editor-page .gce-master-detail {
+  display: grid;
+  grid-template-columns: minmax(245px, 300px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.git-config-editor-page .gce-master-pane,
+.git-config-editor-page .gce-detail-pane {
+  min-width: 0;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  overflow: hidden;
+}
+
+.git-config-editor-page .gce-master-pane {
+  position: sticky;
+  top: 10.25rem;
+  max-height: calc(100vh - 11.25rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-master-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  padding: .72rem .78rem;
+  border-bottom: 1px solid var(--gce-border);
+  background: var(--gce-soft);
+}
+
+.git-config-editor-page .gce-master-head > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-master-head strong {
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+  font-size: .8rem;
+}
+
+.git-config-editor-page .gce-master-head small {
+  color: var(--bs-secondary-color);
+  font-size: .66rem;
+  margin-top: .08rem;
+}
+
+.git-config-editor-page .gce-master-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: .45rem;
+  padding: .55rem;
+  border-bottom: 1px solid var(--gce-border);
+}
+
+.git-config-editor-page .gce-master-tools .btn {
+  width: 34px;
+  min-width: 34px;
+  height: 31px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.git-config-editor-page .gce-master-list {
+  overflow: auto;
+  padding: .45rem;
+}
+
+.git-config-editor-page .gce-master-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .55rem;
+  padding: .58rem .62rem;
+  border: 1px solid transparent;
+  border-radius: var(--mmbb-radius-lg);
+  background: transparent;
+  color: var(--bs-body-color);
+  text-align: left;
+  text-decoration: none;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+
+.git-config-editor-page .gce-master-pane > .gce-master-item {
+  margin: .45rem;
+  width: calc(100% - .9rem);
+}
+
+.git-config-editor-page .gce-master-item:hover,
+.git-config-editor-page .gce-master-item:focus-visible {
+  background: var(--bs-tertiary-bg);
+  outline: none;
+}
+
+.git-config-editor-page .gce-master-item.active {
+  border-color: var(--gce-active-border);
+  background: var(--gce-active);
+  box-shadow: inset 3px 0 0 var(--gce-accent);
+}
+
+.git-config-editor-page .gce-master-icon {
+  width: 31px;
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-secondary-color);
+}
+
+.git-config-editor-page .gce-master-item.active .gce-master-icon {
+  background: color-mix(in srgb, var(--gce-accent) 13%, var(--bs-body-bg));
+  color: var(--gce-accent);
+}
+
+.git-config-editor-page .gce-master-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-master-copy strong,
+.git-config-editor-page .gce-master-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.git-config-editor-page .gce-master-copy strong {
+  font-size: .76rem;
+}
+
+.git-config-editor-page .gce-master-copy small {
+  margin-top: .07rem;
+  color: var(--bs-secondary-color);
+  font-size: .63rem;
+}
+
+.git-config-editor-page .gce-master-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  margin-top: .28rem;
+}
+
+.git-config-editor-page .gce-master-chips span {
+  padding: .12rem .32rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 999px;
+  background: var(--bs-body-bg);
+  color: var(--bs-secondary-color);
+  font-size: .56rem;
+}
+
+.git-config-editor-page .gce-dot {
+  width: .48rem;
+  height: .48rem;
+  border-radius: 50%;
+  background: var(--bs-secondary-color);
+}
+
+.git-config-editor-page .gce-dot.is-on {
+  background: var(--bs-success);
+  box-shadow: 0 0 0 3px rgba(var(--bs-success-rgb), .12);
+}
+
+.git-config-editor-page .gce-dot.is-off {
+  background: var(--bs-secondary-color);
+}
+
+.git-config-editor-page .gce-master-note {
+  display: flex;
+  align-items: flex-start;
+  gap: .45rem;
+  margin: auto .55rem .55rem;
+  padding: .62rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--gce-soft);
+  color: var(--bs-secondary-color);
+  font-size: .65rem;
+  line-height: 1.45;
+}
+
+.git-config-editor-page .gce-master-empty,
+.git-config-editor-page .gce-detail-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--bs-secondary-color);
+}
+
+.git-config-editor-page .gce-master-empty {
+  min-height: 175px;
+  padding: 1rem;
+}
+
+.git-config-editor-page .gce-detail-empty {
+  min-height: 520px;
+  padding: 2rem;
+}
+
+.git-config-editor-page .gce-master-empty i,
+.git-config-editor-page .gce-detail-empty i {
+  margin-bottom: .55rem;
+  color: color-mix(in srgb, var(--gce-accent) 60%, var(--bs-secondary-color));
+  font-size: 1.8rem;
+}
+
+.git-config-editor-page .gce-master-empty strong,
+.git-config-editor-page .gce-detail-empty h3 {
+  margin: 0;
+  color: var(--bs-emphasis-color);
+  font-size: .82rem;
+}
+
+.git-config-editor-page .gce-master-empty span,
+.git-config-editor-page .gce-detail-empty p {
+  margin: .22rem 0 0;
+  font-size: .68rem;
+}
+
+.git-config-editor-page .gce-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .72rem .82rem;
+  border-bottom: 1px solid var(--gce-border);
+  background: color-mix(in srgb, var(--gce-accent) 3%, var(--bs-body-bg));
+}
+
+.git-config-editor-page .gce-detail-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.git-config-editor-page .gce-detail-icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--gce-accent) 11%, var(--bs-body-bg));
+  color: var(--gce-accent);
+}
+
+.git-config-editor-page .gce-detail-title > div {
+  min-width: 0;
+}
+
+.git-config-editor-page .gce-detail-title h3,
+.git-config-editor-page .gce-detail-title p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.git-config-editor-page .gce-detail-title h3 {
+  margin: 0;
+  color: var(--bs-emphasis-color);
+  font-size: .9rem;
+  font-weight: 750;
+}
+
+.git-config-editor-page .gce-detail-title p {
+  margin: .12rem 0 0;
+  color: var(--bs-secondary-color);
+  font-size: .65rem;
+}
+
+.git-config-editor-page .gce-detail-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.git-config-editor-page .gce-detail-meta .btn[title] {
+  width: 33px;
+  min-width: 33px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.git-config-editor-page .gce-profile-tab-content > .tab-pane > .gce-form-section,
+.git-config-editor-page .gce-profile-tab-content > .tab-pane > .gce-profile-id-row {
+  margin-bottom: .75rem;
+}
+
+.git-config-editor-page .gce-profile-tab-content > .tab-pane > :last-child {
+  margin-bottom: 0;
+}
+
+.git-config-editor-page .gce-editor-labelrow {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+
+.git-config-editor-page .gce-editor-labelrow > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-editor-labelrow strong {
+  font-size: .76rem;
+}
+
+.git-config-editor-page .gce-editor-labelrow small {
+  margin-top: .08rem;
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.git-config-editor-page .git-config-editor {
+  min-height: 500px;
+  resize: vertical;
+  border-color: var(--gce-border);
+  background: color-mix(in srgb, var(--bs-body-bg) 98%, var(--bs-tertiary-bg));
+  line-height: 1.48;
+  font-size: .74rem;
+  tab-size: 2;
+}
+
+.git-config-editor-page .git-config-editor:focus {
+  border-color: var(--gce-active-border);
+  box-shadow: 0 0 0 .15rem color-mix(in srgb, var(--gce-accent) 14%, transparent);
+  background: var(--bs-body-bg);
+}
+
+.git-config-editor-page .gce-profile-id-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: .65rem;
+  align-items: end;
+  max-width: 620px;
+}
+
+.git-config-editor-page .gce-profile-id-row .form-label {
+  margin-bottom: .25rem;
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.git-config-editor-page .gce-overview-empty {
+  min-height: 470px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-secondary-color);
+  font-size: .75rem;
+}
+
+.git-config-editor-page .gce-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+.git-config-editor-page .gce-summary-card {
+  min-width: 0;
+  padding: .75rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--gce-soft);
+}
+
+.git-config-editor-page .gce-summary-card.gce-summary-wide {
+  grid-column: span 2;
+}
+
+.git-config-editor-page .gce-summary-card span,
+.git-config-editor-page .gce-summary-card strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.git-config-editor-page .gce-summary-card span {
+  margin-bottom: .22rem;
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.git-config-editor-page .gce-summary-card strong {
+  color: var(--bs-emphasis-color);
+  font-size: .8rem;
+}
+
+.git-config-editor-page .gce-flag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.git-config-editor-page .gce-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: .32rem;
+  padding: .32rem .5rem;
+  border: 1px solid var(--gce-border);
+  border-radius: 999px;
+  background: var(--bs-body-bg);
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.git-config-editor-page .gce-flag.is-on i {
+  color: var(--bs-success);
+}
+
+.git-config-editor-page .gce-validation-state {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  text-align: left;
+}
+
+.git-config-editor-page .gce-validation-state i {
+  font-size: 1.5rem;
+}
+
+.git-config-editor-page .gce-validation-state > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-validation-state strong {
+  font-size: .8rem;
+}
+
+.git-config-editor-page .gce-validation-state span {
+  color: var(--bs-secondary-color);
+  font-size: .68rem;
+}
+
+.git-config-editor-page .gce-validation-state.is-error i {
+  color: var(--bs-danger);
+}
+
+.git-config-editor-page .gce-backup-panel {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem .8rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--gce-soft);
+}
+
+.git-config-editor-page .gce-backup-copy {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-backup-copy strong {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .76rem;
+}
+
+.git-config-editor-page .gce-backup-copy small {
+  margin-top: .1rem;
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.git-config-editor-page .gce-backup-controls {
+  flex: 1 1 640px;
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: .6rem;
+  align-items: center;
+}
+
+@media (max-width: 1199.98px) {
+  .git-config-editor-page .gce-master-detail {
+    grid-template-columns: minmax(225px, 270px) minmax(0, 1fr);
+  }
+
+  .git-config-editor-page .gce-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 899.98px) {
+  .git-config-editor-page .gce-commandbar {
+    position: static;
+  }
+
+  .git-config-editor-page .gce-master-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .git-config-editor-page .gce-master-pane {
+    position: static;
+    max-height: 300px;
+  }
+
+  .git-config-editor-page .gce-master-list {
+    max-height: 220px;
+  }
+
+  .git-config-editor-page .gce-detail-empty {
+    min-height: 260px;
+  }
+
+  .git-config-editor-page .gce-backup-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .git-config-editor-page .gce-backup-controls {
+    flex-basis: auto;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .git-config-editor-page .gce-commandbar-main,
+  .git-config-editor-page .gce-detail-header,
+  .git-config-editor-page .gce-editor-labelrow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .git-config-editor-page .gce-command-actions,
+  .git-config-editor-page .gce-command-actions .btn,
+  .git-config-editor-page .gce-server-field {
+    width: 100%;
+  }
+
+  .git-config-editor-page .gce-command-actions .btn {
+    justify-content: center;
+  }
+
+  .git-config-editor-page .gce-detail-meta {
+    justify-content: flex-start;
+  }
+
+  .git-config-editor-page .gce-profile-id-row,
+  .git-config-editor-page .gce-backup-controls,
+  .git-config-editor-page .gce-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .git-config-editor-page .gce-summary-card.gce-summary-wide {
+    grid-column: auto;
+  }
+
+  .git-config-editor-page .gce-backup-controls .btn {
+    width: 100%;
+  }
+}
+
+
+/* Gleiche Akzent-Buttons auf beiden Verwaltungsseiten. */
+.cfg-editor-page .btn-outline-primary,
+.git-config-editor-page .btn-outline-primary {
+  --bs-btn-color: var(--cm-config-accent);
+  --bs-btn-border-color: var(--cm-config-accent);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--cm-config-accent);
+  --bs-btn-hover-border-color: var(--cm-config-accent);
+  --bs-btn-focus-shadow-rgb: 176, 0, 32;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--cm-config-accent);
+  --bs-btn-active-border-color: var(--cm-config-accent);
+  --bs-btn-disabled-color: color-mix(in srgb, var(--cm-config-accent) 55%, var(--bs-secondary-color));
+  --bs-btn-disabled-border-color: color-mix(in srgb, var(--cm-config-accent) 45%, var(--bs-border-color));
+}
+
+
+/* Portal 2.7.1: dieselbe neutrale Detailkopf-Farbgebung wie Managed Configs. */
+.git-config-editor-page .gce-detail-header {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--bs-body-bg) 0%,
+    color-mix(in srgb, var(--bs-tertiary-bg) 42%, var(--bs-body-bg)) 100%
+  );
+  box-shadow: inset 3px 0 0 var(--gce-accent);
+}
+
+.git-config-editor-page .gce-detail-header::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: color-mix(in srgb, var(--gce-accent) 16%, var(--gce-border));
+  pointer-events: none;
+}
+
+.git-config-editor-page .gce-detail-icon {
+  border: 1px solid color-mix(in srgb, var(--gce-accent) 20%, var(--gce-border));
+  background: color-mix(in srgb, var(--gce-accent) 7%, var(--bs-body-bg));
+}
+
+.git-config-editor-page .gce-master-item.is-active {
+  background: color-mix(in srgb, var(--gce-accent) 5%, var(--bs-body-bg));
+}
+
+/* Portal 2.8.0: strukturierte Eingabemaske für alle git_deploy-Profilparameter. */
+.git-config-editor-page .gce-profile-form {
+  display: block;
+}
+
+.git-config-editor-page .gce-form-section {
+  overflow: hidden;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+}
+
+.git-config-editor-page .gce-form-section > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .8rem;
+  padding: .68rem .75rem;
+  cursor: pointer;
+  list-style: none;
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 58%, var(--bs-body-bg));
+  border-left: 3px solid color-mix(in srgb, var(--gce-accent) 72%, transparent);
+}
+
+.git-config-editor-page .gce-form-section > summary::-webkit-details-marker {
+  display: none;
+}
+
+.git-config-editor-page .gce-form-section > summary::after {
+  content: '\F282';
+  flex: 0 0 auto;
+  font-family: bootstrap-icons;
+  color: var(--bs-secondary-color);
+  transition: transform .15s ease;
+}
+
+.git-config-editor-page .gce-form-section[open] > summary::after {
+  transform: rotate(180deg);
+}
+
+.git-config-editor-page .gce-form-section > summary > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--bs-emphasis-color);
+  font-size: .76rem;
+  font-weight: 750;
+}
+
+.git-config-editor-page .gce-form-section > summary > span i {
+  color: var(--gce-accent);
+}
+
+.git-config-editor-page .gce-form-section > summary > small {
+  margin-left: auto;
+  color: var(--bs-secondary-color);
+  font-size: .62rem;
+  font-weight: 400;
+}
+
+.git-config-editor-page .gce-form-section[open] > :not(summary) {
+  margin: .75rem;
+}
+
+.git-config-editor-page .gce-form-grid {
+  display: grid;
+  gap: .72rem;
+  align-items: end;
+}
+
+.git-config-editor-page .gce-form-grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.git-config-editor-page .gce-form-grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.git-config-editor-page .gce-span-2 {
+  grid-column: span 2;
+}
+
+.git-config-editor-page .gce-span-3 {
+  grid-column: span 3;
+}
+
+.git-config-editor-page .gce-profile-form .form-label,
+.git-config-editor-page .gce-preserve-row .form-label {
+  margin-bottom: .25rem;
+  color: var(--bs-emphasis-color);
+  font-size: .68rem;
+  font-weight: 700;
+}
+
+.git-config-editor-page .gce-profile-form .form-text {
+  margin-top: .2rem;
+  font-size: .59rem;
+}
+
+.git-config-editor-page .gce-check-card {
+  min-height: 58px;
+  display: flex;
+  align-items: flex-start;
+  gap: .58rem;
+  padding: .58rem .65rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 42%, var(--bs-body-bg));
+}
+
+.git-config-editor-page .gce-check-card .form-check-input {
+  flex: 0 0 auto;
+  margin-top: .15rem;
+}
+
+.git-config-editor-page .gce-check-card > span {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-check-card strong {
+  font-size: .69rem;
+}
+
+.git-config-editor-page .gce-check-card small {
+  margin-top: .08rem;
+  color: var(--bs-secondary-color);
+  font-size: .59rem;
+  line-height: 1.35;
+}
+
+.git-config-editor-page .gce-flag-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .6rem;
+}
+
+.git-config-editor-page .gce-array-editor {
+  padding: .65rem;
+  border: 1px dashed color-mix(in srgb, var(--gce-accent) 24%, var(--gce-border));
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--gce-accent) 2%, var(--bs-body-bg));
+}
+
+.git-config-editor-page .gce-array-editor.is-inactive {
+  opacity: .55;
+}
+
+.git-config-editor-page .gce-array-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+}
+
+.git-config-editor-page .gce-array-head > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.git-config-editor-page .gce-array-head strong {
+  font-size: .7rem;
+}
+
+.git-config-editor-page .gce-array-head small {
+  color: var(--bs-secondary-color);
+  font-size: .59rem;
+}
+
+.git-config-editor-page .gce-array-list {
+  display: grid;
+  gap: .4rem;
+  margin-top: .55rem;
+}
+
+.git-config-editor-page .gce-array-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: .42rem;
+}
+
+.git-config-editor-page .gce-array-row .btn,
+.git-config-editor-page .gce-preserve-remove {
+  min-width: 34px;
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.git-config-editor-page .gce-preserve-list {
+  display: grid;
+  gap: .55rem;
+}
+
+.git-config-editor-page .gce-preserve-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.5fr) minmax(145px, .9fr) 64px minmax(95px, .7fr) minmax(95px, .7fr) 82px 34px;
+  gap: .45rem;
+  align-items: end;
+  padding: .62rem;
+  border: 1px solid var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 36%, var(--bs-body-bg));
+}
+
+.git-config-editor-page .gce-preserve-required {
+  min-height: var(--mmbb-control-height-sm);
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  padding-bottom: .38rem;
+  font-size: .64rem;
+}
+
+.git-config-editor-page .gce-inline-empty {
+  padding: .7rem;
+  border: 1px dashed var(--gce-border);
+  border-radius: var(--mmbb-radius-lg);
+  color: var(--bs-secondary-color);
+  text-align: center;
+  font-size: .64rem;
+}
+
+.git-config-editor-page .gce-extra-editor {
+  min-height: 150px;
+  resize: vertical;
+  font-size: .7rem;
+}
+
+.git-config-editor-page .gce-profile-form.is-disabled {
+  opacity: .72;
+}
+
+@media (max-width: 1199.98px) {
+  .git-config-editor-page .gce-preserve-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .git-config-editor-page .gce-preserve-main {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .git-config-editor-page .gce-form-grid-2,
+  .git-config-editor-page .gce-form-grid-3,
+  .git-config-editor-page .gce-flag-grid,
+  .git-config-editor-page .gce-preserve-row {
+    grid-template-columns: 1fr;
+  }
+
+  .git-config-editor-page .gce-span-2,
+  .git-config-editor-page .gce-span-3,
+  .git-config-editor-page .gce-preserve-main {
+    grid-column: auto;
+  }
+
+  .git-config-editor-page .gce-form-section > summary {
+    align-items: flex-start;
+  }
+
+  .git-config-editor-page .gce-form-section > summary > small {
+    display: none;
+  }
+
+  .git-config-editor-page .gce-array-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}
+
+
+/* Portal 3.0.0: Deploy-Profile analog Managed Configs */
+.git-config-editor-page .gce-filterbar {
+  display: flex;
+  align-items: end;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--gce-border);
+}
+
+.git-config-editor-page .gce-filter-field {
+  display: grid;
+  gap: .25rem;
+}
+
+.git-config-editor-page .gce-filter-field .form-label {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.git-config-editor-page .gce-filter-search {
+  flex: 1 1 320px;
+  max-width: 560px;
+}
+
+.git-config-editor-page .gce-filter-reset {
+  min-height: var(--mmbb-control-height-sm);
+}
+
+.git-config-editor-page .gce-json-toolbar .btn {
+  min-height: var(--mmbb-control-height-sm);
+}
+
+.configuration-editor-page .configuration-json-editor {
+  width: 100%;
+  min-height: 560px;
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--mmbb-radius-lg);
+  overflow: hidden;
+}
+
+.configuration-editor-page .configuration-json-editor.is-disabled {
+  opacity: .72;
+}
+
+/* Gemeinsamer Abstand unter der Werkzeug-/Filterleiste. Die linke Masterliste
+ * scrollt innerhalb ihres Panels; Kopf und rechter Detailbereich bleiben stehen. */
+.configuration-editor-page .configuration-editor-workarea {
+  margin-top: 1rem !important;
+}
+
+.configuration-editor-page .cfg-master-list.configuration-master-scroll,
+.configuration-editor-page .gce-master-list.configuration-master-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
+.git-config-editor-page .gce-profile-form {
+  padding: 0;
+}
+
+@media (max-width: 767.98px) {
+  .git-config-editor-page .gce-filterbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .git-config-editor-page .gce-filter-search {
+    max-width: none;
+    width: 100%;
+  }
+
+  .git-config-editor-page .gce-filter-reset {
+    width: 100%;
+  }
+}
+
+/* ==========================================================
+ * Config Manager Portal 3.0.0
+ * Einheitliche Verwaltungsoberflaeche fuer Managed Configs
+ * und Deploy-Profile inklusive Registry-Backups.
+ * ========================================================== */
+.cfg-editor-page .cfg-editor-layout,
+.git-config-editor-page .gce-master-detail,
+.configuration-backup-layout {
+  display: grid;
+  grid-template-columns: minmax(255px, 300px) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.configuration-backup-pane,
+.configuration-backup-pane > .configuration-backup-layout {
+  width: 100%;
+}
+
+.configuration-backup-pane > .configuration-backup-layout {
+  align-items: stretch;
+}
+
+.cfg-editor-page .cfg-master-pane,
+.git-config-editor-page .gce-master-pane,
+.configuration-backup-master,
+.configuration-backup-detail {
+  min-width: 0;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.cfg-editor-page .cfg-master-pane,
+.git-config-editor-page .gce-master-pane,
+.configuration-backup-master {
+  position: sticky;
+  top: 10.25rem;
+  max-height: calc(100vh - 11.25rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.cfg-editor-page .cfg-master-head,
+.git-config-editor-page .gce-master-head,
+.configuration-backup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7rem;
+  padding: .72rem .78rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  background: color-mix(in srgb, var(--bs-body-bg) 94%, var(--bs-tertiary-bg));
+}
+
+.configuration-backup-head > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.configuration-backup-head strong {
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+  font-size: .8rem;
+}
+
+.configuration-backup-head strong i {
+  color: var(--cm-config-accent);
+}
+
+.configuration-backup-head small {
+  margin-top: .08rem;
+  color: var(--bs-secondary-color);
+  font-size: .66rem;
+}
+
+.configuration-backup-actions {
+  padding: .55rem;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.configuration-backup-actions .btn {
+  width: 100%;
+  min-height: var(--mmbb-control-height-sm);
+}
+
+.configuration-backup-list {
+  min-height: 120px;
+  overflow: auto;
+  padding: .45rem;
+}
+
+.configuration-backup-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .55rem;
+  margin: 0 0 .22rem;
+  padding: .58rem .62rem;
+  border: 1px solid transparent;
+  border-radius: var(--mmbb-radius-lg);
+  background: transparent;
+  color: var(--bs-body-color);
+  text-align: left;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+
+.configuration-backup-item:hover,
+.configuration-backup-item:focus-visible {
+  background: var(--bs-tertiary-bg);
+  outline: none;
+}
+
+.configuration-backup-item.active {
+  border-color: var(--cm-config-accent-border);
+  background: var(--cm-config-accent-soft);
+  box-shadow: inset 3px 0 0 var(--cm-config-accent);
+}
+
+.configuration-backup-item > span:nth-child(2) {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.configuration-backup-item strong,
+.configuration-backup-item small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.configuration-backup-item strong {
+  font-size: .74rem;
+  font-weight: 700;
+}
+
+.configuration-backup-item small {
+  margin-top: .1rem;
+  color: var(--bs-secondary-color);
+  font-size: .64rem;
+}
+
+.configuration-backup-item > i {
+  color: var(--bs-secondary-color);
+  font-size: .72rem;
+}
+
+.configuration-backup-icon {
+  width: 31px;
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-secondary-color);
+}
+
+.configuration-backup-item.active .configuration-backup-icon {
+  background: color-mix(in srgb, var(--cm-config-accent) 12%, var(--bs-body-bg));
+  color: var(--cm-config-accent);
+}
+
+.configuration-backup-empty {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  padding: 1.5rem .9rem;
+  color: var(--bs-secondary-color);
+  text-align: center;
+}
+
+.configuration-backup-empty i {
+  font-size: 1.65rem;
+  opacity: .65;
+}
+
+.configuration-backup-empty strong {
+  color: var(--bs-emphasis-color);
+  font-size: .78rem;
+}
+
+.configuration-backup-empty span {
+  font-size: .68rem;
+}
+
+.configuration-backup-detail {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+}
+
+.configuration-backup-detail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .72rem .82rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  background: linear-gradient(
+    180deg,
+    var(--bs-body-bg) 0%,
+    color-mix(in srgb, var(--bs-tertiary-bg) 42%, var(--bs-body-bg)) 100%
+  );
+  box-shadow: inset 3px 0 0 var(--cm-config-accent);
+}
+
+.configuration-backup-detail-head > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.configuration-backup-detail-head strong,
+.configuration-backup-detail-head small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.configuration-backup-detail-head strong {
+  font-size: .82rem;
+}
+
+.configuration-backup-detail-head small {
+  margin-top: .1rem;
+  color: var(--bs-secondary-color);
+  font-size: .66rem;
+}
+
+.configuration-backup-preview {
+  flex: 1 1 auto;
+  min-height: 390px;
+  max-height: 66vh;
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+  border: 0;
+  background: color-mix(in srgb, var(--bs-body-bg) 96%, var(--bs-tertiary-bg));
+  color: var(--bs-body-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .72rem;
+  line-height: 1.48;
+  white-space: pre;
+}
+
+/* Identische Toolbar-Geometrie auf beiden Verwaltungsseiten. */
+.cfg-editor-page .cfg-commandbar,
+.git-config-editor-page .gce-commandbar {
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+  padding: .8rem;
+}
+
+.cfg-editor-page .cfg-commandbar-main,
+.git-config-editor-page .gce-commandbar-main {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cfg-editor-page .cfg-command-actions,
+.git-config-editor-page .gce-command-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+.cfg-editor-page .cfg-server-field,
+.git-config-editor-page .gce-server-field {
+  width: min(360px, 100%);
+  display: grid;
+  grid-template-columns: auto minmax(220px, 320px);
+  align-items: center;
+  gap: .55rem;
+}
+
+.cfg-editor-page .cfg-server-field .form-label,
+.git-config-editor-page .gce-server-field .form-label {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: .72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (max-width: 899.98px) {
+  .cfg-editor-page .cfg-editor-layout,
+  .git-config-editor-page .gce-master-detail,
+  .configuration-backup-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cfg-editor-page .cfg-master-pane,
+  .git-config-editor-page .gce-master-pane,
+  .configuration-backup-master {
+    position: static;
+    max-height: 320px;
+  }
+
+  .configuration-backup-detail {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .cfg-editor-page .cfg-server-field,
+  .git-config-editor-page .gce-server-field {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: .28rem;
+  }
+
+  .configuration-backup-detail-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .configuration-backup-detail-head .btn {
+    width: 100%;
+  }
+}
+
+
+/* Einfacher Modus blendet nur technische Spezialfelder aus. Der Modus selbst
+ * wird kompakt im Detailkopf angezeigt und belegt keine eigene Formularzeile. */
+.git-config-editor-page.gce-simple-mode [data-gce-advanced] { display: none !important; }
+
+.git-config-editor-page .gce-mode-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+}
+
+
+/* Portal 3.3.0: Repository-Assistent und identische Lade-Zustaende */
+.gce-assistant-section {
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--mmbb-radius-lg);
+  padding: 1rem;
+  background: var(--bs-body-bg);
+}
+.gce-assistant-section + .gce-assistant-section { margin-top: 1rem; }
+.gce-assistant-section-head,
+.gce-assistant-block-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.gce-assistant-section-head > div:first-child,
+.gce-assistant-block-head > div:first-child { display: flex; flex-direction: column; }
+.gce-assistant-section-head small,
+.gce-assistant-block-head small { color: var(--bs-secondary-color); font-size: .72rem; margin-top: .15rem; }
+.gce-assistant-summary { display: flex; gap: .4rem; flex-wrap: wrap; }
+.gce-assistant-summary span { display: inline-flex; align-items: baseline; gap: .25rem; padding: .28rem .48rem; border: 1px solid var(--bs-border-color); border-radius: 999px; font-size: .67rem; color: var(--bs-secondary-color); }
+.gce-assistant-summary strong { color: var(--bs-emphasis-color); }
+.gce-assistant-preserve { display: grid; gap: .45rem; }
+.gce-assistant-preserve-row { display: grid; grid-template-columns: 30px minmax(190px, 1.4fr) minmax(135px, .75fr) 72px minmax(90px, .55fr) minmax(90px, .55fr) 82px 34px; align-items: center; gap: .5rem; padding: .55rem; border: 1px solid var(--bs-border-color); border-radius: var(--mmbb-radius-lg); background: var(--bs-body-bg); }
+.gce-assistant-select, .gce-assistant-required { display: flex; align-items: center; justify-content: center; gap: .3rem; margin: 0; font-size: .68rem; }
+.gce-assistant-path { min-width: 0; }
+.gce-assistant-path small { display: block; color: var(--bs-secondary-color); margin-top: .18rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.gce-assistant-details { border: 1px solid var(--bs-border-color); border-radius: var(--mmbb-radius-lg); padding: .7rem .8rem; }
+.gce-assistant-details summary { cursor: pointer; font-weight: 650; font-size: .78rem; }
+.gce-assistant-tree-cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: .8rem; margin-top: .75rem; }
+.gce-assistant-tree pre { max-height: 300px; overflow: auto; padding: .65rem; border: 1px solid var(--bs-border-color); border-radius: var(--mmbb-radius-lg); background: var(--bs-tertiary-bg); font-size: .66rem; }
+.cfg-not-loaded .cfg-detail-pane { min-height: 420px; }
+.cfg-load-placeholder { min-height: 420px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--bs-secondary-color); padding: 2rem; }
+.cfg-load-placeholder i { font-size: 2rem; color: var(--cm-config-accent); margin-bottom: .65rem; }
+@media (max-width: 992px) {
+  .gce-assistant-preserve-row { grid-template-columns: 30px minmax(0, 1fr) 34px; }
+  .gce-assistant-preserve-row > select, .gce-assistant-required, .gce-assistant-preserve-row > input[data-ap] { grid-column: 2; }
+  .gce-assistant-tree-cols { grid-template-columns: 1fr; }
+}
+
+
+/* ==========================================================
+ * 3.10.5 - Kanonische Editor-Oberflaeche
+ * Managed Configs und Deploy-Profile verwenden dieselben
+ * visuellen Grundbausteine. Seitenspezifisches CSS darf diese
+ * Geometrie nicht nochmals definieren.
+ * ========================================================== */
+.cfg-editor-page .cfg-workspace,
+.git-config-editor-page .gce-workspace {
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  box-shadow: 0 .15rem .55rem rgba(0, 0, 0, .035);
+}
+
+.cfg-editor-page .cfg-commandbar,
+.git-config-editor-page .gce-commandbar {
+  position: sticky;
+  top: 4.25rem;
+  z-index: 8;
+  padding: .8rem;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--bs-body-bg) 96%, var(--bs-tertiary-bg));
+  box-shadow: 0 .1rem .3rem rgba(0, 0, 0, .025);
+}
+
+.cfg-editor-page .cfg-command-actions .btn,
+.git-config-editor-page .gce-command-actions .btn,
+.cfg-editor-page .cfg-filter-reset,
+.git-config-editor-page .gce-filter-reset {
+  min-height: var(--mmbb-control-height-sm);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.cfg-editor-page .cfg-filterbar,
+.git-config-editor-page .gce-filterbar {
+  display: flex;
+  align-items: end;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+}
+
+.cfg-editor-page .cfg-filter-field,
+.git-config-editor-page .gce-filter-field {
+  display: grid;
+  gap: .25rem;
+}
+
+.cfg-editor-page .cfg-filter-field .form-label,
+.git-config-editor-page .gce-filter-field .form-label {
+  margin: 0;
+  color: var(--bs-secondary-color);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.cfg-editor-page .cfg-filter-search,
+.git-config-editor-page .gce-filter-search {
+  flex: 1 1 300px;
+  min-width: min(100%, 250px);
+}
+
+.cfg-editor-page .cfg-filter-field:not(.cfg-filter-search) {
+  flex: 0 1 190px;
+}
+
+.cfg-editor-page .cfg-master-pane,
+.git-config-editor-page .gce-master-pane {
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  box-shadow: none;
+}
+
+.cfg-editor-page .cfg-master-head,
+.git-config-editor-page .gce-master-head {
+  padding: .72rem .78rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  background: color-mix(in srgb, var(--bs-body-bg) 94%, var(--bs-tertiary-bg));
+}
+
+.cfg-editor-page .cfg-master-head strong,
+.git-config-editor-page .gce-master-head strong {
+  gap: .38rem;
+  font-size: .8rem;
+}
+
+.cfg-editor-page .cfg-master-head strong i,
+.git-config-editor-page .gce-master-head strong i {
+  color: var(--cm-config-accent);
+}
+
+.cfg-editor-page .cfg-master-head small,
+.git-config-editor-page .gce-master-head small {
+  margin-top: .08rem;
+  font-size: .66rem;
+}
+
+.cfg-editor-page .cfg-master-list,
+.git-config-editor-page .gce-master-list {
+  padding: .45rem;
+}
+
+.cfg-editor-page .cfg-master-row,
+.git-config-editor-page .gce-master-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .55rem;
+  padding: .58rem .62rem;
+  border: 1px solid transparent;
+  border-radius: var(--mmbb-radius-lg);
+  background: transparent;
+  color: var(--bs-body-color);
+  text-align: left;
+  transition: background-color .12s ease, border-color .12s ease;
+}
+
+.cfg-editor-page .cfg-master-row:hover,
+.git-config-editor-page .gce-master-item:hover,
+.git-config-editor-page .gce-master-item:focus-visible {
+  background: var(--bs-tertiary-bg);
+  outline: none;
+}
+
+.cfg-editor-page .cfg-master-row.is-active,
+.git-config-editor-page .gce-master-item.active {
+  border-color: var(--cm-config-accent-border);
+  background: color-mix(in srgb, var(--cm-config-accent) 5%, var(--bs-body-bg));
+  box-shadow: inset 3px 0 0 var(--cm-config-accent);
+}
+
+.cfg-editor-page .cfg-master-type,
+.git-config-editor-page .gce-master-icon {
+  width: 31px;
+  height: 31px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-secondary-color);
+}
+
+.cfg-editor-page .cfg-master-row.is-active .cfg-master-type,
+.git-config-editor-page .gce-master-item.active .gce-master-icon {
+  background: color-mix(in srgb, var(--cm-config-accent) 13%, var(--bs-body-bg));
+  color: var(--cm-config-accent);
+}
+
+.cfg-editor-page .cfg-master-copy strong,
+.git-config-editor-page .gce-master-copy strong {
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.cfg-editor-page .cfg-master-copy small,
+.git-config-editor-page .gce-master-copy small {
+  margin-top: .07rem;
+  color: var(--bs-secondary-color);
+  font-size: .63rem;
+}
+
+.cfg-editor-page .cfg-master-empty,
+.cfg-editor-page .cfg-detail-empty,
+.git-config-editor-page .gce-master-empty,
+.git-config-editor-page .gce-detail-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--bs-secondary-color);
+  text-align: center;
+}
+
+.cfg-editor-page .cfg-master-empty,
+.git-config-editor-page .gce-master-empty {
+  min-height: 175px;
+  padding: 1rem;
+}
+
+.cfg-editor-page .cfg-detail-empty,
+.git-config-editor-page .gce-detail-empty {
+  min-height: 520px;
+  padding: 2rem;
+}
+
+.cfg-editor-page .cfg-master-empty i,
+.cfg-editor-page .cfg-detail-empty > i,
+.git-config-editor-page .gce-master-empty i,
+.git-config-editor-page .gce-detail-empty i {
+  margin-bottom: .55rem;
+  color: color-mix(in srgb, var(--cm-config-accent) 60%, var(--bs-secondary-color));
+  font-size: 1.8rem;
+}
+
+.cfg-editor-page .cfg-master-empty strong,
+.git-config-editor-page .gce-master-empty strong,
+.cfg-editor-page .cfg-detail-empty h3,
+.git-config-editor-page .gce-detail-empty h3 {
+  margin: 0;
+  color: var(--bs-emphasis-color);
+  font-size: .82rem;
+}
+
+.cfg-editor-page .cfg-master-empty span,
+.git-config-editor-page .gce-master-empty span,
+.cfg-editor-page .cfg-detail-empty p,
+.git-config-editor-page .gce-detail-empty p {
+  margin: .22rem 0 0;
+  font-size: .68rem;
+}
+
+.cfg-editor-page #cards .cfg-detail-card,
+.git-config-editor-page .gce-detail-pane {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: var(--bs-body-bg);
+  box-shadow: none;
+}
+
+.cfg-editor-page #cards .cfg-detail-header,
+.git-config-editor-page .gce-detail-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .72rem .82rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--bs-border-color) 92%, var(--bs-body-color));
+  background: linear-gradient(180deg, var(--bs-body-bg) 0%, color-mix(in srgb, var(--bs-tertiary-bg) 42%, var(--bs-body-bg)) 100%);
+  box-shadow: inset 3px 0 0 var(--cm-config-accent);
+}
+
+.cfg-editor-page #cards .cfg-detail-title,
+.git-config-editor-page .gce-detail-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+}
+
+.cfg-editor-page #cards .cfg-detail-icon,
+.git-config-editor-page .gce-detail-icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid color-mix(in srgb, var(--cm-config-accent) 20%, var(--bs-border-color));
+  border-radius: var(--mmbb-radius-lg);
+  background: color-mix(in srgb, var(--cm-config-accent) 7%, var(--bs-body-bg));
+  color: var(--cm-config-accent);
+}
+
+.cfg-editor-page #cards .cfg-detail-title h2,
+.git-config-editor-page .gce-detail-title h3 {
+  margin: 0;
+  color: var(--bs-emphasis-color);
+  font-size: .9rem;
+  font-weight: 750;
+}
+
+.cfg-editor-page #cards .cfg-detail-title p,
+.git-config-editor-page .gce-detail-title p {
+  margin: .12rem 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--bs-secondary-color);
+  font-size: .65rem;
+}
+
+.cfg-editor-page #cards .cfg-detail-header-meta,
+.git-config-editor-page .gce-detail-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.cfg-editor-page #cards .cfg-detail-header-meta .btn,
+.git-config-editor-page .gce-detail-meta .btn[title] {
+  width: 33px;
+  min-width: 33px;
+  height: 33px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 899.98px) {
+  .cfg-editor-page .cfg-commandbar,
+  .git-config-editor-page .gce-commandbar { position: static; }
+
+  .cfg-editor-page .cfg-detail-empty,
+  .git-config-editor-page .gce-detail-empty { min-height: 260px; }
+}
+
+@media (max-width: 639.98px) {
+  .cfg-editor-page .cfg-commandbar-main,
+  .git-config-editor-page .gce-commandbar-main,
+  .cfg-editor-page #cards .cfg-detail-header,
+  .git-config-editor-page .gce-detail-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cfg-editor-page .cfg-command-actions,
+  .git-config-editor-page .gce-command-actions,
+  .cfg-editor-page .cfg-command-actions .btn,
+  .git-config-editor-page .gce-command-actions .btn {
+    width: 100%;
+  }
+
+  .cfg-editor-page .cfg-filterbar,
+  .git-config-editor-page .gce-filterbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .cfg-editor-page .cfg-filter-field,
+  .git-config-editor-page .gce-filter-field,
+  .cfg-editor-page .cfg-filter-reset,
+  .git-config-editor-page .gce-filter-reset {
+    width: 100%;
+    max-width: none;
+  }
+
+  .cfg-editor-page #cards .cfg-detail-header-meta,
+  .git-config-editor-page .gce-detail-meta { justify-content: flex-start; }
+}
+
+/* Portal 3.10.12: Managed-Configs Navigator – klare, kollisionsfreie Listendarstellung. */
+.cfg-editor-page .cfg-editor-layout {
+  grid-template-columns: minmax(320px, 350px) minmax(0, 1fr);
+}
+
+.cfg-editor-page .cfg-master-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.cfg-editor-page .cfg-master-head > div {
+  min-width: 0;
+}
+
+.cfg-editor-page .cfg-master-head strong,
+.cfg-editor-page .cfg-master-head small {
+  display: block;
+}
+
+.cfg-editor-page .cfg-master-head small {
+  max-width: 245px;
+  line-height: 1.35;
+}
+
+.cfg-editor-page .cfg-master-group + .cfg-master-group {
+  margin-top: .55rem;
+  padding-top: .5rem;
+  border-top: 1px solid color-mix(in srgb, var(--bs-border-color) 78%, transparent);
+}
+
+.cfg-editor-page .cfg-master-group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  min-height: 24px;
+  padding: .18rem .5rem .32rem;
+  color: var(--bs-secondary-color);
+  font-size: .62rem;
+  font-weight: 750;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+
+.cfg-editor-page .cfg-master-group-title > span:last-child {
+  min-width: 22px;
+  padding: .08rem .35rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 999px;
+  background: var(--bs-tertiary-bg);
+  text-align: center;
+  font-size: .58rem;
+  line-height: 1.25;
+}
+
+.cfg-editor-page .cfg-master-row {
+  grid-template-columns: 32px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: .62rem;
+  row-gap: .28rem;
+  min-height: 66px;
+  margin: 0 0 .28rem;
+  padding: .62rem .68rem;
+  overflow: hidden;
+}
+
+.cfg-editor-page .cfg-master-type {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: center;
+  flex: 0 0 auto;
+}
+
+.cfg-editor-page .cfg-master-copy {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: .12rem;
+  overflow: hidden;
+}
+
+.cfg-editor-page .cfg-master-copy strong,
+.cfg-editor-page .cfg-master-copy small {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cfg-editor-page .cfg-master-copy strong {
+  color: var(--bs-emphasis-color);
+  font-size: .74rem;
+  line-height: 1.3;
+}
+
+.cfg-editor-page .cfg-master-copy small {
+  margin: 0;
+  font-size: .59rem;
+  line-height: 1.3;
+}
+
+.cfg-editor-page .cfg-master-meta {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  min-width: 0;
+  color: var(--bs-secondary-color);
+  font-size: .58rem;
+  line-height: 1.2;
+}
+
+.cfg-editor-page .cfg-master-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .2rem;
+  min-height: 20px;
+  padding: .12rem .38rem;
+  border: 1px solid color-mix(in srgb, var(--bs-border-color) 88%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bs-tertiary-bg) 70%, var(--bs-body-bg));
+  white-space: nowrap;
+}
+
+.cfg-editor-page .cfg-master-row.is-active .cfg-master-meta > span {
+  border-color: color-mix(in srgb, var(--cm-config-accent) 18%, var(--bs-border-color));
+  background: color-mix(in srgb, var(--cm-config-accent) 6%, var(--bs-body-bg));
+}
+
+@media (max-width: 1050px) {
+  .cfg-editor-page .cfg-editor-layout {
+    grid-template-columns: minmax(285px, 315px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cfg-editor-page .cfg-editor-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cfg-editor-page .cfg-master-pane {
+    max-height: 380px;
+  }
+}
+
+/* 3.10.13 - Deploy-Profile UX: primary workflow + secondary actions */
+.git-config-editor-page .gce-command-actions {
+  align-items: center;
+}
+.git-config-editor-page .gce-command-actions > .dropdown {
+  display: inline-flex;
+}
+.git-config-editor-page .gce-command-actions .dropdown-menu {
+  min-width: 16rem;
+  padding: .4rem;
+}
+.git-config-editor-page .gce-command-actions .dropdown-item {
+  border-radius: .35rem;
+  font-size: .82rem;
+  padding: .5rem .65rem;
+}
+.git-config-editor-page .gce-command-actions .dropdown-item:disabled {
+  opacity: .48;
+}
+.git-config-editor-page .gce-server-field .form-text {
+  margin-top: .3rem;
+  font-size: .72rem;
+}
+.git-config-editor-page .gce-detail-meta {
+  gap: .45rem;
+}
+.git-config-editor-page .gce-detail-meta .btn {
+  min-width: auto;
+}
+.git-config-editor-page #gceProfileActiveState,
+.git-config-editor-page #gceProfilesStatus,
+.git-config-editor-page #gceModeState {
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .git-config-editor-page .gce-command-actions > .dropdown,
+  .git-config-editor-page #gceMoreActions {
+    width: 100%;
+  }
+  .git-config-editor-page .gce-command-actions .dropdown-menu {
+    width: 100%;
+  }
+}
+
+/* 3.10.14 - Deploy-Profile layout cleanup: compact command bar + uncluttered profile header */
+.git-config-editor-page .gce-commandbar {
+  padding: .7rem .8rem;
+  gap: .7rem;
+}
+
+.git-config-editor-page .gce-commandbar-main {
+  display: grid;
+  grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+  align-items: end;
+  gap: .85rem 1rem;
+}
+
+.git-config-editor-page .gce-server-field {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .22rem;
+}
+
+.git-config-editor-page .gce-command-actions {
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+}
+
+.git-config-editor-page .gce-filterbar {
+  margin-top: 0;
+  padding-top: .65rem;
+  gap: .6rem;
+}
+
+.git-config-editor-page .gce-detail-header {
+  align-items: center;
+  min-height: 58px;
+  padding: .65rem .8rem;
+}
+
+.git-config-editor-page .gce-detail-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .55rem;
+  flex-wrap: nowrap;
+}
+
+.git-config-editor-page .gce-detail-status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+.git-config-editor-page .gce-detail-meta .dropdown {
+  flex: 0 0 auto;
+}
+
+.git-config-editor-page .gce-detail-meta .btn,
+.git-config-editor-page .gce-detail-meta .btn[title] {
+  width: auto;
+  min-width: auto;
+  height: var(--mmbb-control-height-sm);
+  padding: .25rem .55rem;
+}
+
+.git-config-editor-page .gce-detail-meta .dropdown-menu {
+  min-width: 13rem;
+  padding: .35rem;
+}
+
+.git-config-editor-page .gce-detail-meta .dropdown-item {
+  border-radius: .35rem;
+  padding: .48rem .6rem;
+  font-size: .8rem;
+}
+
+@media (max-width: 899.98px) {
+  .git-config-editor-page .gce-commandbar-main {
+    grid-template-columns: 1fr;
+  }
+
+  .git-config-editor-page .gce-command-actions {
+    justify-content: flex-start;
+  }
+
+  .git-config-editor-page .gce-detail-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .git-config-editor-page .gce-detail-meta,
+  .git-config-editor-page .gce-detail-status {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .git-config-editor-page .gce-command-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .git-config-editor-page .gce-command-actions > .dropdown,
+  .git-config-editor-page #gceMoreActions {
+    width: 100%;
+  }
+
+  .git-config-editor-page .gce-detail-meta {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .git-config-editor-page .gce-detail-meta .dropdown,
+  .git-config-editor-page #gceProfileActions {
+    width: 100%;
+  }
+}
+
+/* 3.6.3 Deploy-Profile UX polish */
+.git-config-editor-page .gce-commandbar-main {
+  display: grid;
+  grid-template-columns: minmax(250px, 320px) minmax(360px, 1fr) auto;
+  align-items: end;
+  gap: .9rem 1.1rem;
+}
+
+.git-config-editor-page .gce-context-strip {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(110px, 1fr));
+  gap: .45rem;
+}
+
+.git-config-editor-page .gce-context-item {
+  min-width: 0;
+  padding: .45rem .58rem;
+  border: 1px solid var(--gce-border);
+  border-radius: .55rem;
+  background: var(--bs-body-bg);
+}
+
+.git-config-editor-page .gce-context-item span,
+.git-config-editor-page .gce-context-item strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.git-config-editor-page .gce-context-item span {
+  margin-bottom: .08rem;
+  color: var(--bs-secondary-color);
+  font-size: .58rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.git-config-editor-page .gce-context-item strong {
+  color: var(--bs-emphasis-color);
+  font-size: .7rem;
+  font-weight: 700;
+}
+
+.git-config-editor-page .gce-command-actions {
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+.git-config-editor-page #gceSave:disabled {
+  opacity: 1;
+  color: var(--bs-secondary-color);
+  background: var(--bs-tertiary-bg);
+  border-color: var(--bs-border-color);
+}
+
+.git-config-editor-page .gce-detail-meta {
+  gap: .55rem;
+}
+
+.git-config-editor-page .gce-detail-status {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  flex-wrap: wrap;
+}
+
+.git-config-editor-page .gce-kebab {
+  width: 34px;
+  min-width: 34px;
+  padding-inline: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.git-config-editor-page .gce-kebab::after {
+  display: none;
+}
+
+@media (max-width: 1199.98px) {
+  .git-config-editor-page .gce-commandbar-main {
+    grid-template-columns: minmax(240px, 300px) minmax(280px, 1fr);
+  }
+  .git-config-editor-page .gce-command-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .git-config-editor-page .gce-commandbar-main {
+    grid-template-columns: 1fr;
+  }
+  .git-config-editor-page .gce-context-strip,
+  .git-config-editor-page .gce-command-actions {
+    grid-column: auto;
+  }
+  .git-config-editor-page .gce-context-strip {
+    grid-template-columns: 1fr;
+  }
+  .git-config-editor-page .gce-command-actions {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* 3.6.4 Deploy-Profile toolbar: direct load action, compact layout */
+.git-config-editor-page .gce-commandbar-main {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  align-items: end;
+  gap: 16px;
+}
+.git-config-editor-page .gce-command-actions {
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.git-config-editor-page .gce-command-actions #gceLoad {
+  font-weight: 600;
+}
+@media (max-width: 1100px) {
+  .git-config-editor-page .gce-commandbar-main {
+    grid-template-columns: 1fr;
+  }
+  .git-config-editor-page .gce-command-actions {
+    justify-content: flex-start;
+  }
+}

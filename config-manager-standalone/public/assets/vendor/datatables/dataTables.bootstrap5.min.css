@@ -1,0 +1,28 @@
+/* TEKO offline DataTables-compatible styling */
+.dataTables_wrapper { width: 100%; }
+.dataTables_wrapper .dataTables_filter { margin-bottom: .75rem; text-align: right; }
+.dataTables_wrapper .dataTables_filter label { display: inline-flex; gap: .5rem; align-items: center; }
+.dataTables_wrapper .dataTables_filter input {
+  display: inline-block; width: auto; min-width: 14rem;
+  padding: .375rem .75rem; border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius); background: var(--bs-body-bg); color: var(--bs-body-color);
+}
+.dataTables_wrapper .dataTables_length select {
+  display: inline-block; width: auto; padding: .25rem 2rem .25rem .5rem;
+  border: 1px solid var(--bs-border-color); border-radius: var(--bs-border-radius);
+  background-color: var(--bs-body-bg); color: var(--bs-body-color);
+}
+.dataTables_wrapper .dataTables_info { padding-top: .6rem; }
+.dataTables_wrapper .dataTables_paginate {
+  display: flex; gap: .25rem; justify-content: flex-end; align-items: center; padding-top: .5rem;
+}
+.dataTables_wrapper .paginate_button {
+  cursor: pointer; border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius); padding: .25rem .55rem;
+  background: var(--bs-body-bg); color: var(--bs-body-color);
+}
+.dataTables_wrapper .paginate_button.current { background: var(--bs-primary); color: #fff; border-color: var(--bs-primary); }
+.dataTables_wrapper .paginate_button.disabled { opacity: .45; cursor: default; }
+table.dataTable thead th[data-dt-orderable="true"] { cursor: pointer; user-select: none; }
+table.dataTable thead th.dt-sort-asc::after { content: " ▲"; font-size: .7em; }
+table.dataTable thead th.dt-sort-desc::after { content: " ▼"; font-size: .7em; }

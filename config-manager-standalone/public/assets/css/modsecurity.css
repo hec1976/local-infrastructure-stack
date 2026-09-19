@@ -1,0 +1,66 @@
+/* TEKO ModSecurity console - visual/exception-management pass */
+.ms-console{--ms-border:#c8d2df;--ms-muted:#667085;--ms-soft:#f6f8fb;--ms-blue:#1d4ed8;--ms-green:#15803d;--ms-red:#b42318;}
+.ms-console .teko-commandbar{background:#fff;border:1px solid var(--ms-border);border-radius:10px;padding:.85rem 1rem;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.ms-console .teko-stat-strip{gap:.65rem;margin:.8rem 0}
+.ms-console .teko-stat{background:#fff;border:1px solid var(--ms-border);border-radius:9px;padding:.7rem .85rem;min-height:68px}
+.ms-console .teko-stat-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.035em;color:var(--ms-muted);font-weight:700}
+.ms-console .teko-stat-value{font-size:1rem;font-weight:750;margin-top:.18rem}
+.ms-console .teko-section{background:#fff;border:1px solid var(--ms-border);border-radius:10px;padding:0;overflow:hidden;box-shadow:0 1px 3px rgba(16,24,40,.05)}
+.ms-console .ms-tabs{padding:.55rem .8rem 0;background:#fbfcfe;border-bottom:1px solid var(--ms-border);gap:.2rem}
+.ms-console .ms-tabs .nav-link{border:0;border-bottom:3px solid transparent;border-radius:6px 6px 0 0;color:#475467;font-weight:650;padding:.68rem .9rem}
+.ms-console .ms-tabs .nav-link.active{background:#fff;color:#174ea6;border-bottom-color:#2563eb}
+.ms-console .tab-content{padding:1rem}
+.ms-panel{border:1px solid var(--ms-border);border-radius:9px;background:#fff;overflow:hidden}
+.ms-panel-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem .9rem;border-bottom:1px solid var(--ms-border);background:#f9fafb}
+.ms-panel-title{font-weight:750;color:#24324a}.ms-panel-sub{font-size:.78rem;color:var(--ms-muted);margin-top:.15rem}
+.ms-panel-body{padding:.9rem}
+.ms-kicker{font-size:.69rem;text-transform:uppercase;letter-spacing:.06em;color:#667085;font-weight:800}
+.ms-health{display:inline-flex;align-items:center;gap:.38rem;border:1px solid #b7dfc3;background:#eefbf2;color:#166534;padding:.28rem .55rem;border-radius:999px;font-size:.75rem;font-weight:700}
+.ms-workflow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.55rem;margin-bottom:1rem}
+.ms-step{border:1px solid var(--ms-border);background:#fff;border-radius:8px;padding:.65rem .7rem;display:flex;gap:.55rem;align-items:flex-start}
+.ms-step-num{width:1.55rem;height:1.55rem;border-radius:50%;display:grid;place-items:center;background:#e8eefc;color:#174ea6;font-size:.72rem;font-weight:800;flex:none}
+.ms-step strong{display:block;font-size:.8rem}.ms-step span{display:block;font-size:.72rem;color:var(--ms-muted);margin-top:.12rem}
+.ms-builder-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(330px,.92fr);gap:1rem;align-items:start}
+.ms-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+.ms-form-grid .full{grid-column:1/-1}
+.ms-console .form-label{font-size:.76rem;font-weight:700;color:#344054;margin-bottom:.28rem}
+.ms-console .form-control,.ms-console .form-select{border-color:#b9c4d2}
+.ms-console .form-control:focus,.ms-console .form-select:focus{border-color:#4f7edb;box-shadow:0 0 0 .18rem rgba(37,99,235,.12)}
+.ms-event-input{min-height:155px;resize:vertical;font-size:.78rem;line-height:1.45}
+.ms-preview{background:#111827;color:#e5e7eb;border-radius:8px;border:1px solid #273244;padding:.8rem;min-height:180px;max-height:330px;overflow:auto;white-space:pre-wrap;font:12px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace}
+.ms-preview-empty{color:#94a3b8}
+.ms-scope-card{border:1px solid var(--ms-border);border-radius:8px;padding:.65rem .75rem;background:var(--ms-soft);font-size:.78rem}
+.ms-scope-line{display:grid;grid-template-columns:90px 1fr;gap:.45rem;padding:.16rem 0}.ms-scope-line b{color:#475467}.ms-scope-line span{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}
+.ms-risk{display:inline-flex;align-items:center;border-radius:999px;padding:.2rem .5rem;font-size:.7rem;font-weight:800}.ms-risk-low{background:#ecfdf3;color:#027a48}.ms-risk-medium{background:#fffaeb;color:#b54708}.ms-risk-high{background:#fef3f2;color:#b42318}
+.ms-toolbar{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center}
+.ms-managed-list{display:grid;gap:.5rem}.ms-managed-item{border:1px solid var(--ms-border);border-left:4px solid #3b82f6;border-radius:7px;padding:.62rem .72rem;background:#fff}.ms-managed-item .title{font-weight:750;font-size:.8rem}.ms-managed-item .meta{font-size:.72rem;color:var(--ms-muted);margin-top:.2rem;overflow-wrap:anywhere}
+.ms-empty{border:1px dashed #b8c3d1;border-radius:8px;padding:1rem;text-align:center;color:var(--ms-muted);background:#fafbfc}
+.ms-editor-wrap{border:1px solid var(--ms-border);border-radius:8px;overflow:hidden}.ms-editor-head{padding:.6rem .75rem;background:#f7f8fa;border-bottom:1px solid var(--ms-border);display:flex;justify-content:space-between;align-items:center}.ms-editor{border:0!important;border-radius:0!important;min-height:390px;font-size:.78rem;line-height:1.52;padding:.85rem!important;background:#fbfcfe}
+.ms-rule-table thead th{font-size:.72rem;text-transform:uppercase;letter-spacing:.03em;color:#475467;background:#f6f8fb!important}.ms-rule-table td{font-size:.79rem}
+.ms-config-card{border:1px solid var(--ms-border);border-radius:8px;padding:.75rem;background:#fbfcfe;height:100%}.ms-config-card .form-label{margin-bottom:.4rem}
+.ms-console details>summary{list-style:none}.ms-console details>summary::-webkit-details-marker{display:none}
+@media(max-width:1100px){.ms-builder-grid{grid-template-columns:1fr}.ms-workflow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.ms-form-grid,.ms-workflow{grid-template-columns:1fr}.ms-form-grid .full{grid-column:auto}.ms-console .tab-content{padding:.75rem}.ms-scope-line{grid-template-columns:1fr}}
+
+/* 3.3.0 Security Events / Loki workflow */
+.ms-event-hero{display:flex;justify-content:space-between;align-items:center;gap:1rem;border:1px solid var(--ms-border);border-radius:9px;padding:.8rem .9rem;background:linear-gradient(135deg,#f8fbff,#fff)}
+.ms-event-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.65rem}.ms-event-stat{border:1px solid var(--ms-border);border-radius:8px;background:#fff;padding:.65rem .75rem}.ms-event-stat span{display:block;font-size:.69rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ms-muted);font-weight:750}.ms-event-stat strong{display:block;font-size:1.22rem;margin-top:.12rem;color:#1f2937}.ms-events-table-wrap{max-height:540px;overflow:auto}.ms-events-table thead th{position:sticky;top:0;z-index:2;background:#f6f8fb!important;font-size:.69rem;text-transform:uppercase;letter-spacing:.03em;color:#475467;white-space:nowrap}.ms-events-table td{font-size:.76rem;vertical-align:middle}.ms-event-uri{max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ms-event-tuned{opacity:.72;background:#f6fbf7}.ms-event-tuned:hover{opacity:1}.ms-console .badge.text-bg-danger{background:#b42318!important}.ms-console .badge.text-bg-success{background:#15803d!important}@media(max-width:900px){.ms-event-hero{align-items:flex-start;flex-direction:column}.ms-event-stats{grid-template-columns:repeat(2,1fr)}}
+
+/* 3.4.0 workflow-first layout + server-side auto rule builder */
+.ms-statusbar{display:flex;align-items:stretch;gap:.55rem;margin:.75rem 0;background:#fff;border:1px solid var(--ms-border);border-radius:10px;padding:.55rem;box-shadow:0 1px 3px rgba(16,24,40,.04)}
+.ms-status-main,.ms-status-item{display:flex;flex-direction:column;justify-content:center;min-width:120px;padding:.35rem .65rem;border-right:1px solid #e7ebf0}.ms-status-main{flex-direction:row;align-items:center;gap:.45rem;min-width:185px}.ms-status-item span{font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ms-muted);font-weight:750}.ms-status-item strong{font-size:.83rem;color:#24324a;margin-top:.1rem}.ms-status-dot{width:.58rem;height:.58rem;border-radius:50%;background:#16a34a;box-shadow:0 0 0 4px rgba(22,163,74,.10)}
+.ms-runtime-details{border:1px solid #b7dfc3;border-radius:9px;padding:.72rem .85rem;background:#f4fcf6;color:#245b34}.ms-runtime-details.ms-runtime-bad{border-color:#f5c2c7;background:#fff5f5;color:#842029}
+.ms-workflow.compact{margin-bottom:.75rem}.ms-workflow.compact .ms-step{padding:.52rem .62rem}
+.ms-auto-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(340px,.85fr);gap:1rem;align-items:start}
+.ms-selected-event{border:1px solid var(--ms-border);border-radius:9px;background:#f8fafc;padding:.75rem}.ms-selected-event .ms-empty{border:0;padding:.6rem;background:transparent}.ms-selected-head{display:flex;justify-content:space-between;gap:.75rem;align-items:center;margin-bottom:.65rem}.ms-selected-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.45rem .8rem}.ms-selected-grid>div{min-width:0}.ms-selected-grid span{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.04em;color:var(--ms-muted);font-weight:750}.ms-selected-grid strong{display:block;font-size:.78rem;color:#263449;overflow-wrap:anywhere;margin-top:.1rem}
+.ms-correction-grid{border-top:1px solid #e5eaf0;padding-top:.75rem}.ms-correction-grid .form-label:after{content:' (automatisch)';font-weight:400;color:#98a2b3;font-size:.68rem}.ms-correction-grid .full .form-label:after{content:''}
+#technicalPreview>summary{cursor:pointer;color:#475467;padding:.35rem 0}.ms-preview{min-height:120px}
+.ms-events-table .btn{white-space:nowrap}
+@media(max-width:1200px){.ms-statusbar{flex-wrap:wrap}.ms-status-item{border-right:0;border-bottom:1px solid #eef1f4;flex:1 1 150px}.ms-auto-grid{grid-template-columns:1fr}}
+@media(max-width:720px){.ms-selected-grid{grid-template-columns:1fr}.ms-status-main{width:100%}}
+/* 3.5.0: compact event analytics and managed-exclusion metadata */
+.ms-event-stats{grid-template-columns:repeat(6,minmax(120px,1fr))}
+@media (max-width:1400px){.ms-event-stats{grid-template-columns:repeat(3,minmax(120px,1fr))}}
+@media (max-width:800px){.ms-event-stats{grid-template-columns:repeat(2,minmax(120px,1fr))}}
+/* 3.5.1 actionable Security Events: summary/anomaly rows are technical context only */
+.ms-correlation-hint{margin-top:.18rem;font-weight:500;white-space:nowrap}.ms-events-table .ms-event-tuned td{background:#f7fbf8}.ms-events-table .badge{font-weight:700}
