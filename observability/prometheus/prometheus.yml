@@ -1,0 +1,13 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+    static_configs:
+      - targets: ["127.0.0.1:9090"]
+        labels:
+          platform: config-manager
+
+# Remote clients can use Prometheus remote_write when the management ingress
+# is deliberately exposed/proxied. The container itself remains loopback-only.

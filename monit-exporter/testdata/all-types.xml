@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<monit>
+ <server><id>abc</id><version>6.0.0</version><uptime>12345</uptime><poll>30</poll><localhostname>teko-test</localhostname></server>
+ <platform><name>Linux</name><release>6.6</release><machine>x86_64</machine><cpu>8</cpu><memory>32768000</memory><swap>8388608</swap></platform>
+ <service type="0"><name>rootfs</name><collected_sec>100</collected_sec><status>0</status><monitor>1</monitor><monitormode>0</monitormode><block><percent>42.5</percent><usage>100000</usage><total>200000</total></block><inode><percent>12.5</percent><usage>1000</usage><total>8000</total></inode></service>
+ <service type="1"><name>etc-dir</name><status>0</status><monitor>1</monitor><mode>493</mode><uid>0</uid><gid>0</gid><timestamp>1700000000</timestamp></service>
+ <service type="2"><name>monitrc-file</name><status>0</status><monitor>1</monitor><mode>384</mode><uid>0</uid><gid>0</gid><timestamp>1700000001</timestamp><size>2048</size><checksum>deadbeef</checksum></service>
+ <service type="3"><name>postfix</name><status>0</status><monitor>1</monitor><pid>1234</pid><ppid>1</ppid><uptime>3600</uptime><threads>4</threads><children>2</children><memory><percent>1.5</percent><percenttotal>2.0</percenttotal><kilobyte>10240</kilobyte><kilobytetotal>15360</kilobytetotal></memory><cpu><percent>3.2</percent><percenttotal>4.8</percenttotal></cpu></service>
+ <service type="4"><name>example-host</name><status>0</status><monitor>1</monitor><icmp><responsetime>0.012</responsetime></icmp><port><hostname>example</hostname><portnumber>443</portnumber><protocol>https</protocol><responsetime>0.045</responsetime></port></service>
+ <service type="5"><name>teko-test</name><status>0</status><monitor>1</monitor><system><load><avg01>0.1</avg01><avg05>0.2</avg05><avg15>0.3</avg15></load><cpu><user>5.1</user><system>2.2</system><wait>0.4</wait></cpu><memory><percent>50.0</percent><kilobyte>16384000</kilobyte></memory><swap><percent>2.0</percent><kilobyte>16384</kilobyte></swap></system></service>
+ <service type="6"><name>queue-fifo</name><status>0</status><monitor>1</monitor><mode>420</mode><uid>1000</uid><gid>1000</gid><timestamp>1700000002</timestamp></service>
+ <service type="7"><name>health-program</name><status>0</status><monitor>1</monitor><program><started>1700000003</started><status>0</status><output>OK</output></program></service>
+ <service type="8"><name>eth0</name><status>0</status><monitor>1</monitor><link><state>1</state><speed>1000</speed><duplex>1</duplex></link><download><bytes><total>123456789</total></bytes><packets><total>12345</total></packets><errors><total>2</total></errors></download><upload><bytes><total>987654321</total></bytes><packets><total>54321</total></packets><errors><total>3</total></errors></upload></service>
+</monit>
