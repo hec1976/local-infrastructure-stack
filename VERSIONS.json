@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "stack": "3.18.32",
+  "config_manager": "2.33.6",
+  "config_agent": "2.23.15"
+}
