@@ -1,0 +1,78 @@
+[Unit]
+Description=Config Agent 2.23.15
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/service/config-agent
+EnvironmentFile=-/opt/service/env/config-agent.env
+UMask=0007
+ExecStart=/usr/bin/perl /opt/service/config-agent/config-agent.pl
+TimeoutStartSec=30
+TimeoutStopSec=30
+Restart=on-failure
+RestartSec=5s
+
+# Sandboxing
+ProtectSystem=false
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelLogs=true
+ProtectHostname=true
+LockPersonality=true
+RestrictRealtime=true
+RemoveIPC=true
+MemoryDenyWriteExecute=true
+# Post-Deploy-Installer duerfen auf freigegebenen Laufzeitverzeichnissen
+# Setgid fuer kontrollierte Gruppenvererbung setzen (z.B. backup/json/log).
+# Die Hooks selbst sind profilgebunden und auf den aktiven Release begrenzt.
+RestrictSUIDSGID=false
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+NoNewPrivileges=true
+
+# Paketmanagement ist eine Kernfunktion des Config-Agenten.
+# ProtectSystem=true wuerde /usr und /boot innerhalb des Service-Mount-Namespace
+# read-only machen; zypper/rpm bricht dann beim RPM-Lock mit EROFS ab. Daher ist
+# ProtectSystem bewusst deaktiviert. Kritische Konfigurations- und Secret-Pfade
+# bleiben unten explizit read-only; API-/Path-Guards begrenzen Schreibaktionen.
+ReadWritePaths=/var/log/service
+ReadWritePaths=/var/lib/service/config-agent/git-deploy
+ReadWritePaths=/var/lib/service/config-agent/git-upload
+ReadWritePaths=/var/lib/service/config-agent/secrets
+ReadWritePaths=/opt/service
+ReadWritePaths=-/opt/service_script
+ReadWritePaths=-/etc/systemd/system
+
+# Der Agent ist auch Deployment-/Package-Executor. Paket-Skriptlets und
+# freigegebene Git-Deploy-Hooks muessen deshalb systemweite Paketaktionen wie
+# useradd/groupadd ausfuehren duerfen (z. B. Vendor-Servicekonten). Ein
+# ReadOnlyPaths= auf /etc/shadow, /etc/gshadow, /etc/ssh usw. wuerde legitime
+# RPM-Installationen im Mount-Namespace des Agenten mit EROFS abbrechen.
+#
+# Schutz fuer den generischen Datei-Manager und direkte File-APIs erfolgt
+# stattdessen in Core.pm ueber HARD_PROTECTED_PATHS und Capability-Scopes.
+# Agent-eigene statische Credentials bleiben weiterhin read-only.
+ReadOnlyPaths=-/opt/service/env
+ReadOnlyPaths=-/opt/service/ssl
+
+AmbientCapabilities=CAP_CHOWN CAP_FOWNER CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+CapabilityBoundingSet=CAP_CHOWN CAP_FOWNER CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
+
+SystemCallFilter=@system-service
+SystemCallArchitectures=native
+ProtectProc=invisible
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=config-agent
+
+[Install]
+WantedBy=multi-user.target

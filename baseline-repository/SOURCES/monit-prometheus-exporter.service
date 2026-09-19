@@ -1,0 +1,32 @@
+[Unit]
+Description=Monit Prometheus Exporter
+After=network-online.target monit.service
+Wants=network-online.target
+Requires=monit.service
+
+[Service]
+Type=simple
+DynamicUser=true
+EnvironmentFile=-/var/lib/service/config-agent/secrets/monit-status.env
+Environment=MONIT_EXPORTER_LISTEN=127.0.0.1:9108
+Environment=MONIT_URL=http://127.0.0.1:2812/_status?format=xml&level=full
+Environment=MONIT_TLS_INSECURE=false
+ExecStart=/usr/bin/monit-prometheus-exporter
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target

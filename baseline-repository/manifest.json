@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "repository_id": "infrastructure-baseline",
+  "meta_package": "client-baseline",
+  "components": {
+    "monit": {"package": "monit", "configuration_owner": "client-baseline"},
+    "monit_exporter": {"package": "monit-prometheus-exporter", "configuration_owner": "rpm"},
+    "alloy": {"package": "alloy", "configuration_owner": "client-baseline"}
+  }
+}

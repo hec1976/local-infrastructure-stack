@@ -1,0 +1,67 @@
+{
+  "listen": "127.0.0.1:5008",
+  "allowed_ips": [
+    "192.168.121.20/32",
+    "127.0.0.1/32"
+  ],
+  "ssl_enable": 1,
+  "ssl_cert_file": "/opt/service/ssl/agent.local.crt",
+  "ssl_key_file": "/opt/service/ssl/agent.local.key",
+  "logfile": "/var/log/service/config-agent.log",
+  "serviceUser": "root",
+  "serviceGroup": "root",
+  "fileMode_service": "0660",
+  "backupDir": "/opt/service/config-agent/backup",
+  "auto_create_backups": true,
+  "path_guard": "enforce",
+  "allowed_roots": [
+    "/etc",
+    "/opt",
+    "/srv",
+    "/var/lib",
+    "/var/log",
+    "/usr/local"
+  ],
+  "tmpDir": "/opt/service/config-agent/tmp",
+  "maxBackups": 51,
+  "managed_configs_file": "/opt/service/config-agent/managed_configs.json",
+  "forgejo": {
+    "url": "https://git.local",
+    "token_file": "/opt/service/env/forgejo-api.token",
+    "verify_tls": false
+  },
+  "git_deploy": {
+    "enabled": true,
+    "allowed_roots": [
+      "/opt/service",
+      "/opt/service_script",
+      "/opt/mmbb_services",
+      "/opt/mmbb_script"
+    ]
+  },
+  "git_upload": {
+    "enabled": true,
+    "allowed_owners": [
+      "teko"
+    ]
+  },
+  "backupRetentionDays": 90,
+  "minimumBackups": 10,
+  "cors_allow_any_origin": false,
+  "allowed_origins": [],
+  "action_script_roots": [
+    "/opt/service_script"
+  ],
+  "allow_global_daemon_reload": false,
+  "file_manager_read_roots": [
+    "/"
+  ],
+  "file_manager_write_roots": [
+    "/etc",
+    "/opt",
+    "/srv",
+    "/var/lib",
+    "/var/log",
+    "/usr/local"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": 2,
+  "profiles": {
+    "teko-config-deploy": {
+      "enabled": true,
+      "repository": "https://git.local/teko/config-deploy.git",
+      "branch": "main",
+      "target": "/opt/service/config-deploy",
+      "owner": "root",
+      "group": "root",
+      "preserve": [],
+      "require_diff_preview": true,
+      "allow_symlinks": false,
+      "reject_hardlinks": true,
+      "reject_lfs_pointers": true
+    }
+  }
+}

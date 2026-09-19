@@ -1,0 +1,208 @@
+{
+  "config-agent-global": {
+    "path": "/opt/service/config-agent/global.json",
+    "category": "config",
+    "service": "config-agent.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0640",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "config-agent-git-deploy": {
+    "path": "/opt/service/config-agent/git_deploy.json",
+    "category": "config",
+    "service": "config-agent.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0640",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "apache-listen": {
+    "path": "/etc/apache2/listen.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "apache-config-manager-vhost": {
+    "path": "/etc/apache2/vhosts.d/config-manager.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "apache-forgejo-vhost": {
+    "path": "/etc/apache2/vhosts.d/forgejo-teko.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "apache-grafana-vhost": {
+    "path": "/etc/apache2/vhosts.d/grafana-teko.conf",
+    "category": "web",
+    "service": "apache2.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "postfix-main": {
+    "path": "/etc/postfix/main.cf",
+    "category": "mail",
+    "service": "postfix.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "start": [],
+      "stop": [],
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "postfix-master": {
+    "path": "/etc/postfix/master.cf",
+    "category": "mail",
+    "service": "postfix.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "start": [],
+      "stop": [],
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "monit-teko-stack": {
+    "path": "/etc/monit.d/teko-stack.monitrc",
+    "category": "monitoring",
+    "service": "monit.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0600",
+    "actions": {
+      "status": [],
+      "reload": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "loki-config": {
+    "path": "/srv/observability/loki.yaml",
+    "category": "monitoring",
+    "service": "loki.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "grafana-loki-datasource": {
+    "path": "/srv/observability/grafana/provisioning/datasources/loki.yaml",
+    "category": "monitoring",
+    "service": "grafana.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "grafana-dashboard-provider": {
+    "path": "/srv/observability/grafana/provisioning/dashboards/teko.yaml",
+    "category": "monitoring",
+    "service": "grafana.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  },
+  "prometheus-config": {
+    "path": "/srv/observability/prometheus/prometheus.yml",
+    "category": "monitoring",
+    "service": "prometheus.service",
+    "user": "root",
+    "group": "root",
+    "mode": "0644",
+    "actions": {
+      "status": [],
+      "restart": [],
+      "journal": [
+        80
+      ]
+    }
+  }
+}
